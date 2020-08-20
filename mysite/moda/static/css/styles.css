@@ -1,0 +1,138 @@
+body{
+	color:midnightblue;
+}
+
+.row-header{
+	margin: 0px auto;
+	padding: 20px 0px 10px 0px;
+	border-bottom: 1px ridge;
+	opacity: 80%;
+}
+
+.row-content{
+	margin: 0px auto;
+	padding: 40px 0px 50px 0px;
+	border-bottom: 2px ridge;
+	min-height:200px;
+}
+.button-content{
+	margin: 0px auto;
+	padding: 40px 0px 60px 0px;
+	min-height:100px;
+}
+
+.footer{
+	margin: 0px;
+	background-color: lightgreen;
+	padding: 20px 0px 20px 0px;
+}
+
+.jumbotron{
+	padding: 60px 10px 60px 10px;
+	margin: 0px auto;
+	background: lightblue;
+}
+
+.address{
+	font-size: 80%;
+	margin: 0px;
+
+}
+
+.btn-info{
+	background: lightblue;
+	color: black;
+	border: 0px;
+	padding: 10px 24px;
+}
+
+.aDisable, .aDisable:hover{
+	text-decoration: none;
+	color: inherit;
+}
+
+.card{
+	border:none ;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+}
+
+.card-body{
+	padding-bottom: 0px;
+	padding-top: 0px;
+	width: auto;
+	height: auto;
+}
+
+.card-out{
+	border: none;
+}
+.header-like{
+	margin-bottom: 10px;
+	background-color: lightgreen;
+}
+.header-uncertain{
+	margin-bottom: 10px;
+	background-color: lightgrey;
+}
+.header-dislike{
+	margin-bottom: 10px;
+	background-color:coral;
+}
+
+.imgIn{
+	cursor: zoom-in;
+	width: 200px;
+	height: 200px;
+}
+
+.modal{
+	padding-top: 50px;
+}
+.modal-content{
+	margin: auto;
+	background: none;
+	border: none;
+}
+
+.imgZoom{
+	height: 450px;
+	width: 350px;
+
+}
+
+.close {
+	top: 10px;
+	right: 35px;
+	color: #f1f1f1;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+	cursor: pointer;
+	width: 72.5%;
+}
+.btn-group{
+	margin-top: 5%;
+}
+
+.btn-success{
+	background: darkgray;
+	border: none;
+}
+.btn-danger{
+	background: darkgray;
+	border: none;
+}
+
+.btn:focus{
+	box-shadow: none;
+}
+.btn:active{
+	outline: none;
+	box-shadow: none !important;
+}
+
+.btn{
+	box-shadow: none !important;
+}
+
