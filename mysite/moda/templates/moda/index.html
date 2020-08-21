@@ -13,7 +13,7 @@
 
 <head>
 
-    <link rel="stylesheet" href="{% static '/css/styles.css' %}"  type="text/css" >
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}?{% now "U" %}"  type="text/css" >
     <!-- Required meta tags always come first -->
     
 
@@ -43,17 +43,15 @@
                 <h3>Smart Shopping. <br> Learning from you.</h3>
             </div>
             <div class="col-sm-8 text-justify">
-                <p> Nowadays, improve the customer's shopping journey through meaningful and personal
-                    interactions is a pertinent challenge for e-commerces. Thus, Looking to offer a personalized
-                    experience and save time, we develop a smart tool that iteratively learns customers'
-                    preferences based on their feedback.
+                <p> Nowadays, improving the customer's shopping journey through meaningful and personal
+                    interactions is a challenge for e-commerces sites. Thus, Trying to offer you a personalized shopping experience and to save your time, we developed this smart tool that interact with you to learn your preferences based on your feedback.
                 </p>
             </div>
         </div>
 
         <div class="row button-content align-items-center ">
             <div class="col-12 text-center">
-                <a class="aDisable" href="initgallery.html">
+                <a class="aDisable" href="{% url 'initgallery' %}">
                     <button type="button" class="btn btn-info btn-begin btn-lg">Begin</button>
                 </a>
             </div>

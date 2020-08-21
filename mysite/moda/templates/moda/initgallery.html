@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -10,9 +11,12 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
+{% load fontawesome_5 %}
+
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static '/css/styles.css' %}"  type="text/css" >
+    {% fontawesome_5_static %} 
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}?{% now "U" %}"  type="text/css" >
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,7 +44,7 @@
 
     <div class="container">
         <div class="row row-header justify-content-center">
-            <h4> Let us know your opinion. There's any skirt that fits your expectations?
+            <h4> Let us know your opinion. Is there any skirt below that you like?
             </h4>
         </div>
 
@@ -52,13 +56,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img01">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000001.jpg">
+                                <img class="imgIn img-fluid" src= "{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000001.jpg' %}">
                             </a>
                             <div id="img01" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000001.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000001.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -83,13 +87,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img02">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000002.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000002.jpg' %}">
                             </a>
                             <div id="img02" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000002.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000002.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -114,13 +118,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img03">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000003.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000003.jpg' %}">
                             </a>
                             <div id="img03" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000003.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000003.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -145,13 +149,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img04">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000004.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000004.jpg' %}">
                             </a>
                             <div id="img04" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000004.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000004.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -176,13 +180,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img05">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000005.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000005.jpg' %}">
                             </a>
                             <div id="img05" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000005.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000005.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -207,13 +211,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img06">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000006.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000006.jpg' %}">
                             </a>
                             <div id="img06" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000006.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000006.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -242,13 +246,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img07">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000007.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000007.jpg' %}">
                             </a>
                             <div id="img07" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000007.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000007.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -273,13 +277,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img08">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000008.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000008.jpg' %}">
                             </a>
                             <div id="img08" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000008.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000008.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -304,13 +308,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img09">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000009.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000009.jpg' %}">
                             </a>
                             <div id="img09" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000009.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000009.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -335,13 +339,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img10">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000010.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000010.jpg' %}">
                             </a>
                             <div id="img10" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000010.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000010.jpg' %}">
                                     </div>
                                 </div>
                             </div>
@@ -366,13 +370,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img11">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000011.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000011.jpg' %}">
                             </a>
                             <div id="img11" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000011.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000011.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -397,13 +401,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img12">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000012.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000012.jpg' %}">
                             </a>
                             <div id="img12" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000012.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000012.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -432,13 +436,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img13">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000013.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000013.jpg' %}">
                             </a>
                             <div id="img13" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000013.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000013.jpg' %}">
                                     </div>
                                 </div>
                             </div>
@@ -463,13 +467,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img14">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000014.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000014.jpg' %}">
                             </a>
                             <div id="img14" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000014.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000014.jpg' %}">
                                     </div>
                                 </div>
                             </div>
@@ -494,13 +498,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img15">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000015.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000015.jpg' %}">
                             </a>
                             <div id="img15" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000015.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000015.jpg' %}">
                                     </div>
                                 </div>
                             </div>
@@ -525,13 +529,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img16">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000016.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000016.jpg' %}">
                             </a>
                             <div id="img16" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000016.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000016.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -556,13 +560,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img17">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000017.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000017.jpg' %}">
                             </a>
                             <div id="img17" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000017.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000017.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -587,13 +591,13 @@
                     <div class = "card-body">
                         <div class="row">
                             <a data-toggle="modal" data-target="#img18">
-                                <img class="imgIn img-fluid" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000018.jpg">
+                                <img class="imgIn img-fluid" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000018.jpg' %}">
                             </a>
                             <div id="img18" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="img\Abstract_Brushstroke_Print_Pencil_Skirt\img_00000018.jpg" >
+                                        <img class="imgZoom align-self-center" src="{% static 'img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000018.jpg' %}" >
                                     </div>
                                 </div>
                             </div>
@@ -618,8 +622,8 @@
 
         <div class="row button-content align-items-center ">
             <div class="col-12 text-center">
-                <a class="aDisable" href="smartGallery.html">
-                    <button type="button" class="btn btn-info btn-begin btn-lg">Recommendations</button>
+                <a class="aDisable" href="{% url 'smartgallery' %}">
+                    <button type="button" class="btn btn-info btn-begin btn-lg">See our recommendations</button>
                 </a>
             </div>
         </div>

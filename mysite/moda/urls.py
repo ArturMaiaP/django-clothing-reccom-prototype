@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.urls import path, include
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     path('', views.index, name = "index"),
-    path('', views.initgallery, name = "initgallery"),
-    path('', views.smartgallery, name = "smartGallery"),
-]
+    path('init', views.initgallery, name = "initgallery"),
+    path('smart', views.smartgallery, name = "smartgallery"),
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
