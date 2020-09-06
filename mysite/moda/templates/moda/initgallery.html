@@ -15,20 +15,14 @@
 
 <html lang="en">
 <head>
-    {% fontawesome_5_static %} 
+    {% fontawesome_5_static %}
     <link rel="stylesheet" href="{% static '/css/styles.css' %}?{% now "U" %}"  type="text/css" >
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <!-- Bootstrap CSS -->
-       <!-- Bootstrap CSS
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
--->
-    <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap-social/bootstrap-social.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="{% static '/js/likedislike.js' %}"></script>
+    
     <title>Images Gallery</title>
 </head>
 <body>
@@ -70,11 +64,11 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn0" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
-                                    <input type="radio" name="options" id="likeImg0" ><span class="fa fa-thumbs-up"></span>
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.0 %}');">
+                                    <input type="radio" id="likeImg0" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
-                                    <input type="radio" name="options" id="dislikeImg0" ><span class="fa fa-thumbs-down"></span>
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.0 %}');">
+                                    <input type="radio" id="dislikeImg0" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
                         </div>
@@ -101,10 +95,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn1" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.1 %}');">
                                     <input type="radio" name="options" id="likeImg1" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.1 %}');">
                                     <input type="radio" name="options" id="dislikeImg1" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -132,10 +126,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn2" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.2 %}');">
                                     <input type="radio" name="options" id="likeImg2" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.2 %}');">
                                     <input type="radio" name="options" id="dislikeImg2" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -163,10 +157,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn3" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.3 %}');">
                                     <input type="radio" name="options" id="likeImg3" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.3 %}');">
                                     <input type="radio" name="options" id="dislikeImg3" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -194,10 +188,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn4" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.4 %}');">
                                     <input type="radio" name="options" id="likeImg4" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.4 %}');">
                                     <input type="radio" name="options" id="dislikeImg4" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -225,10 +219,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn5" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.5 %}');">
                                     <input type="radio" name="options" id="likeImg5" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.5 %}');">
                                     <input type="radio" name="options" id="dislikeImg5" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -260,10 +254,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn6" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.6 %}');">
                                     <input type="radio" name="options" id="likeImg6" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.6 %}');">
                                     <input type="radio" name="options" id="dislikeImg6" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -291,10 +285,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn7" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.7 %}');">
                                     <input type="radio" name="options" id="likeImg7" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.7 %}');">
                                     <input type="radio" name="options" id="dislikeImg7" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -322,10 +316,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn8" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.8 %}');">
                                     <input type="radio" name="options" id="likeImg8" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.8 %}');">
                                     <input type="radio" name="options" id="dislikeImg8" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -353,10 +347,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn9" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.9 %}');">
                                     <input type="radio" name="options" id="likeImg9" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.9 %}');">
                                     <input type="radio" name="options" id="dislikeImg9" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -384,10 +378,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn10" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.10 %}');">
                                     <input type="radio" name="options" id="likeImg10" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.10 %}');">
                                     <input type="radio" name="options" id="dislikeImg10" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -415,10 +409,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn11" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.11 %}');">
                                     <input type="radio" name="options" id="likeImg11" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.11 %}');">
                                     <input type="radio" name="options" id="dislikeImg11" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -450,10 +444,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn12" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.12 %}');">
                                     <input type="radio" name="options" id="likeImg12" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.12 %}');">
                                     <input type="radio" name="options" id="dislikeImg12" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -481,10 +475,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn13" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.13 %}');">
                                     <input type="radio" name="options" id="likeImg13" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.13 %}');">
                                     <input type="radio" name="options" id="dislikeImg13" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -512,10 +506,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn14" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.14 %}');">
                                     <input type="radio" name="options" id="likeImg14" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.14 %}');">
                                     <input type="radio" name="options" id="dislikeImg14" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -543,10 +537,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn15" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.15 %}');">
                                     <input type="radio" name="options" id="likeImg15" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.15 %}');">
                                     <input type="radio" name="options" id="dislikeImg15" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -574,10 +568,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn16" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.16 %}');">
                                     <input type="radio" name="options" id="likeImg16" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.16 %}');">
                                     <input type="radio" name="options" id="dislikeImg16" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -605,10 +599,10 @@
 
                         <div class="row d-flex justify-content-center">
                             <div id="btn17" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success">
+                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.17 %}');">
                                     <input type="radio" name="options" id="likeImg17" ><span class="fa fa-thumbs-up"></span>
                                 </label>
-                                <label class="btn btn-danger">
+                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.17 %}');">
                                     <input type="radio" name="options" id="dislikeImg17" ><span class="fa fa-thumbs-down"></span>
                                 </label>
                             </div>
@@ -630,7 +624,6 @@
 
 
     </div>
-
     <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS.
