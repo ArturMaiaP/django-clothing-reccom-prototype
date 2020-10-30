@@ -15,20 +15,30 @@ body{
 	border-bottom: 2px ridge;
 	min-height:200px;
 }
-.button-content{
-	margin: 0px auto;
-	padding: 40px 0px 60px 0px;
+.button-content-init{
+	padding-bottom: 0px;
 	min-height:100px;
 }
 
+
+.button-content{
+	padding-bottom: 0px;
+	max-height:100px;
+	margin-bottom: 3px;
+
+}
+
 .footer{
-	margin: 0px;
-	background-color: lightgreen;
-	padding: 20px 0px 20px 0px;
+	position: fixed;
+	bottom: 0;
+	background: white;
+	width: 100%;
+	background-color: rgba(255,255,255,0.5);
+
 }
 
 .jumbotron{
-	padding: 60px 10px 60px 10px;
+	padding: 40px 10px 40px 10px;
 	margin: 0px auto;
 	background: lightblue;
 }
