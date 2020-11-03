@@ -8,7 +8,7 @@ import os
 # Create your views here.
 
 def index(request):
-	template = loader.get_template('moda/index.html')
+	template = loader.get_template('moda/index2.html')
 	return HttpResponse(template.render(None, request))
 
 def initgallery(request):

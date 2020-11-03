@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% load static %}
+<head>
+
+    <meta charset="UTF-8">
+    <title>Clothing Recommender System</title>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}?{% now 'U' %}"  type="text/css" >
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header class="masthead">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-10 align-self-end">
+                        <h1 class="text-uppercase text-white font-weight-bold">Smart Shopping <br> Learning from you</h1>
+                        <hr class="divider my-4" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-50 font-weight-light mb-5">
+                            Nowadays, improving the customer's shopping journey through meaningful and personal
+                            interactions is a challenge for e-commerces sites. Thus, Trying to offer you a personalized shopping experience and to save your time,
+                            we developed this smart tool that interact with you to learn your preferences based on your feedback.
+                        </p>
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="{% url 'initgallery' %}">Find Out More</a>
+                    </div>
+                </div>
+            </div>
+    </header>
+</body>
+</html>
