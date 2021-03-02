@@ -27,6 +27,9 @@
         <!-- Third party plugin CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
 
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/infinite.min.js' %}"></script>
     
     <title>Images Gallery</title>
 </head>
@@ -50,10 +53,10 @@
         -->
         <!-- First image line (6)-->
         <div class="row row-content">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img00">
                                 <img class="imgIn img-fluid" src= "{% static img_list.0 %}">
                             </a>
@@ -81,10 +84,10 @@
                </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img01">
                                 <img class="imgIn img-fluid" src="{% static img_list.1 %}">
                             </a>
@@ -112,10 +115,10 @@
                 </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img02">
                                 <img class="imgIn img-fluid" src="{% static img_list.2 %}">
                             </a>
@@ -143,10 +146,10 @@
                 </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img03">
                                 <img class="imgIn img-fluid" src="{% static img_list.3 %}">
                             </a>
@@ -173,11 +176,14 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-sm-2">
+        <!-- Second image line-->
+        <div class="row row-content">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img04">
                                 <img class="imgIn img-fluid" src="{% static img_list.4 %}">
                             </a>
@@ -205,10 +211,10 @@
                 </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img05">
                                 <img class="imgIn img-fluid" src="{% static img_list.5 %}">
                             </a>
@@ -217,7 +223,7 @@
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
                                         <img class="imgZoom align-self-center" src="{% static img_list.5 %}" >
-                                    </div>=
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -236,14 +242,10 @@
                 </div>
             </div>
 
-        </div>
-
-        <!-- Second image line-->
-        <div class="row row-content">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img06">
                                 <img class="imgIn img-fluid" src="{% static img_list.6 %}">
                             </a>
@@ -271,18 +273,18 @@
                 </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
-                            <a data-toggle="modal" data-target="#img07">
+                        <div class="row d-flex justify-content-center">
+                            <a data-toggle="modal" data-target="#img7">
                                 <img class="imgIn img-fluid" src="{% static img_list.7 %}">
                             </a>
-                            <div id="img07" class="modal fade">
+                            <div id="img7" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="{% static img_list.7 %}" >
+                                        <img class="imgZoom align-self-center" src="{% static img_list.7 %}">
                                     </div>
                                 </div>
                             </div>
@@ -301,19 +303,22 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-sm-2">
+        <!-- Third image line-->
+        <div class="row row-content">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
-                            <a data-toggle="modal" data-target="#img08">
+                        <div class="row d-flex justify-content-center">
+                            <a data-toggle="modal" data-target="#img8">
                                 <img class="imgIn img-fluid" src="{% static img_list.8 %}">
                             </a>
-                            <div id="img08" class="modal fade">
+                            <div id="img8" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="{% static img_list.8 %}" >
+                                        <img class="imgZoom align-self-center" src="{% static img_list.8 %}">
                                     </div>
                                 </div>
                             </div>
@@ -333,10 +338,10 @@
                 </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img9">
                                 <img class="imgIn img-fluid" src="{% static img_list.9 %}">
                             </a>
@@ -364,10 +369,10 @@
                 </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img10">
                                 <img class="imgIn img-fluid" src="{% static img_list.10 %}">
                             </a>
@@ -375,7 +380,7 @@
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="{% static img_list.10 %}" >
+                                        <img class="imgZoom align-self-center" src="{% static img_list.10 %}">
                                     </div>
                                 </div>
                             </div>
@@ -395,10 +400,10 @@
                 </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class = "card-body">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <a data-toggle="modal" data-target="#img11">
                                 <img class="imgIn img-fluid" src="{% static img_list.11 %}">
                             </a>
@@ -427,206 +432,17 @@
             </div>
 
         </div>
-
-        <!-- Third image line-->
-        <div class="row row-content">
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class = "card-body">
-                        <div class="row">
-                            <a data-toggle="modal" data-target="#img12">
-                                <img class="imgIn img-fluid" src="{% static img_list.12 %}">
-                            </a>
-                            <div id="img12" class="modal fade">
-                                <div class="modal-dialog modal-lg" role="content">
-                                    <div class="modal-content">
-                                        <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="{% static img_list.12 %}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row d-flex justify-content-center">
-                            <div id="btn12" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.12 %}');">
-                                    <input type="radio" name="options" id="likeImg12" ><span class="fa fa-thumbs-up"></span>
-                                </label>
-                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.12 %}');">
-                                    <input type="radio" name="options" id="dislikeImg12" ><span class="fa fa-thumbs-down"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class = "card-body">
-                        <div class="row">
-                            <a data-toggle="modal" data-target="#img13">
-                                <img class="imgIn img-fluid" src="{% static img_list.13 %}">
-                            </a>
-                            <div id="img13" class="modal fade">
-                                <div class="modal-dialog modal-lg" role="content">
-                                    <div class="modal-content">
-                                        <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="{% static img_list.13 %}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row d-flex justify-content-center">
-                            <div id="btn13" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.13 %}');">
-                                    <input type="radio" name="options" id="likeImg13" ><span class="fa fa-thumbs-up"></span>
-                                </label>
-                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.13 %}');">
-                                    <input type="radio" name="options" id="dislikeImg13" ><span class="fa fa-thumbs-down"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class = "card-body">
-                        <div class="row">
-                            <a data-toggle="modal" data-target="#img14">
-                                <img class="imgIn img-fluid" src="{% static img_list.14 %}">
-                            </a>
-                            <div id="img14" class="modal fade">
-                                <div class="modal-dialog modal-lg" role="content">
-                                    <div class="modal-content">
-                                        <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="{% static img_list.14 %}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row d-flex justify-content-center">
-                            <div id="btn14" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.14 %}');">
-                                    <input type="radio" name="options" id="likeImg14" ><span class="fa fa-thumbs-up"></span>
-                                </label>
-                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.14 %}');">
-                                    <input type="radio" name="options" id="dislikeImg14" ><span class="fa fa-thumbs-down"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class = "card-body">
-                        <div class="row">
-                            <a data-toggle="modal" data-target="#img15">
-                                <img class="imgIn img-fluid" src="{% static img_list.15 %}">
-                            </a>
-                            <div id="img15" class="modal fade">
-                                <div class="modal-dialog modal-lg" role="content">
-                                    <div class="modal-content">
-                                        <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="{% static img_list.15 %}" >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row d-flex justify-content-center">
-                            <div id="btn15" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.15 %}');">
-                                    <input type="radio" name="options" id="likeImg15" ><span class="fa fa-thumbs-up"></span>
-                                </label>
-                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.15 %}');">
-                                    <input type="radio" name="options" id="dislikeImg15" ><span class="fa fa-thumbs-down"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class = "card-body">
-                        <div class="row">
-                            <a data-toggle="modal" data-target="#img16">
-                                <img class="imgIn img-fluid" src="{% static img_list.16 %}">
-                            </a>
-                            <div id="img16" class="modal fade">
-                                <div class="modal-dialog modal-lg" role="content">
-                                    <div class="modal-content">
-                                        <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="{% static img_list.16 %}" >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row d-flex justify-content-center">
-                            <div id="btn16" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.16 %}');">
-                                    <input type="radio" name="options" id="likeImg16" ><span class="fa fa-thumbs-up"></span>
-                                </label>
-                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.16 %}');">
-                                    <input type="radio" name="options" id="dislikeImg16" ><span class="fa fa-thumbs-down"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class = "card-body">
-                        <div class="row">
-                            <a data-toggle="modal" data-target="#img17">
-                                <img class="imgIn img-fluid" src="{% static img_list.17 %}">
-                            </a>
-                            <div id="img17" class="modal fade">
-                                <div class="modal-dialog modal-lg" role="content">
-                                    <div class="modal-content">
-                                        <span data-dismiss="modal" class="close text-right">&times;</span>
-                                        <img class="imgZoom align-self-center" src="{% static img_list.17 %}" >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row d-flex justify-content-center">
-                            <div id="btn17" class="btn-group btn-group-toggle" data-toggle="buttons" >
-                                <label class="btn btn-success" onclick="addRelevant('{% static img_list.17 %}');">
-                                    <input type="radio" name="options" id="likeImg17" ><span class="fa fa-thumbs-up"></span>
-                                </label>
-                                <label class="btn btn-danger" onclick="addIrrelevant('{% static img_list.17 %}');">
-                                    <input type="radio" name="options" id="dislikeImg17" ><span class="fa fa-thumbs-down"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </div>
 
     <div class="footer ">
         <div class="row button-content align-items-center">
                 <div class="col-12 text-center">
-                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="{% url 'smartgallery' %}">
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" id="sendList" href="javascript:sendList()">
                         See our recommendations
                     </a>
                 </div>
             </div>
     </div>
+
 </body>
 </html>

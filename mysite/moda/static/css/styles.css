@@ -54,7 +54,6 @@ header.masthead h1 {
 .row-header{
 	margin: 0px auto;
 	padding: 20px 0px 10px 0px;
-	border-bottom: 1px ridge;
 	opacity: 80%;
 	font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
@@ -69,7 +68,6 @@ header.masthead h1 {
 .row-content{
 	margin: 0px auto;
 	padding: 40px 0px 50px 0px;
-	border-bottom: 2px ridge;
 	min-height:200px;
 }
 .button-content-init{
@@ -125,13 +123,12 @@ header.masthead h1 {
 
 .card{
 	border:none ;
-	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
+    background-color: rgb(240,240,240);
 }
 
 .card-body{
-	padding-bottom: 0px;
-	padding-top: 0px;
+	padding-bottom: 5px;
+	padding-top: 5px;
 	width: auto;
 	height: auto;
 }
@@ -154,8 +151,8 @@ header.masthead h1 {
 
 .imgIn{
 	cursor: zoom-in;
-	width: 200px;
-	height: 200px;
+	width: 220px;
+	height: 250px;
 }
 
 .modal{

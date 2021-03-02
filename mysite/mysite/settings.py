@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'moda',
     'bootstrap4',
     'fontawesome_5',
+    'jquery',
+    'django_ajax'
 ]
 
 MIDDLEWARE = [

@@ -29,3 +29,18 @@ function addIrrelevant(path){
         }
     }
 }
+function sendList() {
+    $("#sendList").click(function () {
+        $.ajax({
+            method: 'POST',
+            url: "smart",
+            data: {'listRel[]': listRel, 'listIrrel[]': listIrre},
+            success: function (request) {
+                alert(request);
+            },
+            error: function (request) {
+                alert(request.responseText);
+            }
+        })
+    });
+}
