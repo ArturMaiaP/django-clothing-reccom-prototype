@@ -26,10 +26,6 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
         <!-- Third party plugin CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
-
-    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
-    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'js/infinite.min.js' %}"></script>
     
     <title>Images Gallery</title>
 </head>
@@ -51,16 +47,16 @@
             </h4>
         </div>
         -->
-        <div class="row row-content">
+        <div class="row row-content" id="infiniteDiv">
             {% for imagem in img_list %}
-            <div class="col-sm-3">
+            <div class="col-sm-3 column-padding">
                <div class="card">
                     <div class = "card-body">
                         <div class="row d-flex justify-content-center">
-                            <a data-toggle="modal" data-target="#img00">
+                            <a data-toggle="modal" data-target="#modal{{forloop.counter}}">
                                 <img class="imgIn img-fluid" src= "{% static imagem %}">
                             </a>
-                            <div id="img00" class="modal fade">
+                            <div id="modal{{forloop.counter}}" class="modal fade">
                                 <div class="modal-dialog modal-lg" role="content">
                                     <div class="modal-content">
                                         <span data-dismiss="modal" class="close text-right">&times;</span>
@@ -85,19 +81,24 @@
             </div>
             {% endfor %}
         </div>
-
-
     </div>
 
-    <div class="footer ">
-        <div class="row button-content align-items-center">
-                <div class="col-12 text-center">
-                    <a class="btn btn-primary btn-xl js-scroll-trigger" id="sendList" href="javascript:sendList()">
-                        See our recommendations
-                    </a>
-                </div>
-            </div>
-    </div>
+    <script>
+        $(window).scroll(function() {
+            if($(window).scrollTop() == $(document).height() - $(window).height()) {
+                $.ajax({
+                    method: 'GET',
+                    url: "more-images",
+                    success: function (response) {
+                        $("#infiniteDiv").append(response);
+                    },
+                    error: function (request) {
+                        alert(request.responseText);
+                    }
+                })
+            }
+        });
+    </script>
 
 </body>
 </html>

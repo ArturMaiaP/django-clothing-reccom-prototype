@@ -22,5 +22,6 @@ from django.conf import settings
 urlpatterns = [
     path('', views.index, name = "index"),
     path('init', views.initgallery, name = "initgallery"),
+    path('more-images', views.moreImages, name = "moreImages"),
     path('smart', views.smartgallery, name = "smartgallery"),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

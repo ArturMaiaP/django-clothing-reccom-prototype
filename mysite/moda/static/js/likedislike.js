@@ -9,9 +9,11 @@ function addRelevant(path){
             var id = listIrre.indexOf(path);
             listIrre.splice(id,1);
             listRel.push(path);
+            alert(listRel);
         }
         else{
             listRel.push(path);
+            alert(listRel);
         }
     }
 }
@@ -23,9 +25,11 @@ function addIrrelevant(path){
             var id = listRel.indexOf(path);
             listRel.splice(id,1);
             listIrre.push(path);
+            alert(listIrre);
         }
         else{
             listIrre.push(path);
+            alert(listIrre);
         }
     }
 }

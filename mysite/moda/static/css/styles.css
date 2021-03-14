@@ -64,10 +64,9 @@ header.masthead h1 {
   margin-bottom: 3rem !important;
 }
 
-
 .row-content{
 	margin: 0px auto;
-	padding: 40px 0px 50px 0px;
+	padding: 30px 0px 30px 0px;
 	min-height:200px;
 }
 .button-content-init{
@@ -124,6 +123,10 @@ header.masthead h1 {
 .card{
 	border:none ;
     background-color: rgb(240,240,240);
+}
+
+.column-padding{
+    padding-bottom: 15px;
 }
 
 .card-body{

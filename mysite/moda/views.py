@@ -34,3 +34,10 @@ def smartgallery(request):
     template = loader.get_template('moda/smartGallery.html')
     return HttpResponse(template.render(None, request))
 
+def moreImages(request):
+    qt = QuadTree()
+    dfQuadtree = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
+    listImgIni = qt.selectImgQuadTree(dfQuadtree, 12)
+    context = {'img_list': listImgIni}
+    template = loader.get_template('moda/moreImages.html')
+    return HttpResponse(template.render(context, request))
