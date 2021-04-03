@@ -87,8 +87,9 @@
         $(window).scroll(function() {
             if($(window).scrollTop() == $(document).height() - $(window).height()) {
                 $.ajax({
-                    method: 'GET',
+                    method: 'POST',
                     url: "more-images",
+                    data: {'listRel': listRel, 'listIrrel': listIrre},
                     success: function (response) {
                         $("#infiniteDiv").append(response);
                     },

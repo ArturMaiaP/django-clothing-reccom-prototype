@@ -13,7 +13,7 @@ import os
 # Create your views here.
 
 def index(request):
-	template = loader.get_template('moda/index2.html')
+	template = loader.get_template('moda/index.html')
 	return HttpResponse(template.render(None, request))
 
 def initgallery(request):
@@ -27,17 +27,18 @@ def initgallery(request):
 	return HttpResponse(template.render(context, request))
 
 @csrf_exempt
-def smartgallery(request):
-    listRel = request.POST.get("listRel[]")
-    listIrrel = request.POST.get("listIrrel[]")
-    print(listRel,listIrrel)
-    template = loader.get_template('moda/smartGallery.html')
-    return HttpResponse(template.render(None, request))
-
 def moreImages(request):
+    listRel = request.POST.getlist("listRel[]")
+    listIrrel = request.POST.getlist("listIrrel[]")
+    print("####### IMAGENS ESCOLHIDAS #######")
+    print(listRel)
+    print(listIrrel)
+    print("########## ############ #########")
+
     qt = QuadTree()
     dfQuadtree = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
     listImgIni = qt.selectImgQuadTree(dfQuadtree, 12)
+
     context = {'img_list': listImgIni}
     template = loader.get_template('moda/moreImages.html')
     return HttpResponse(template.render(context, request))
