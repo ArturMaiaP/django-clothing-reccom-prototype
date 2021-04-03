@@ -1,40 +1,39 @@
 
-class Node():
-    def __init__(self, xMin, yMin, xMax, yMax, points):
-        self.xMin = xMin
-        self.yMin = yMin
-        self.xMax = xMax
-        self.yMax = yMax
+class Node:
+    def __init__(self, x_min, y_min, x_max, y_max, points):
+        self.x_min = x_min
+        self.y_min = y_min
+        self.x_max = x_max
+        self.y_max = y_max
         self.points = points
-        #self.nodeNumber = number
         self.childrens = []
 
-    def getPoints(self):
+    def get_points(self):
         return self.points
 
-    def getxLen(self):
-        return abs(self.xMax) + abs(self.xMin)
+    def get_x_len(self):
+        return abs(self.x_max) + abs(self.x_min)
 
-    def getyLen(self):
-        return abs(self.yMax) + abs(self.yMin)
+    def get_y_len(self):
+        return abs(self.y_max) + abs(self.y_min)
 
-    def getxMin(self):
-        return self.xMin
+    def get_x_min(self):
+        return self.x_min
 
-    def getyMin(self):
-        return self.yMin
+    def get_y_min(self):
+        return self.y_min
 
-    def getxMax(self):
-        return self.xMax
+    def get_x_max(self):
+        return self.x_max
 
-    def getyMax(self):
-        return self.yMax
+    def get_y_max(self):
+        return self.y_max
 
-    def getNumberPoints(self):
+    def get_number_points(self):
         return len(self.points)
 
-    def getChildrens(self):
+    def get_childrens(self):
         return self.childrens
 
-    def removePt(self,pt):
+    def remove_pt(self, pt):
         self.points.remove(pt)

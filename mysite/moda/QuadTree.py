@@ -1,128 +1,123 @@
-import pandas as pd
-from .Node import *
 from .AuxPts import *
 from math import ceil
 import random
 
-class QuadTree():
+
+class QuadTree:
     def __init__(self):
-        # self.ptsQTree = []
-        #self.contador = 0
         self.limite = 6
         self.limProf = 10
         self.eps = 0.001
-        self.auxQt = AuxQt()
+        self.aux_qt = AuxQt()
 
-    def selectImgQuadTree(self, dfAtributos, amostras):
-        pontos = self.auxQt.extrairPontosDf(dfAtributos)
+    def select_img_quadtree(self, df_atributos, amostras):
+        pontos = self.aux_qt.extrair_pontos_df(df_atributos)
 
-        xmax = dfAtributos['X'].max() + self.eps
-        xmin = dfAtributos['X'].min()
+        x_max = df_atributos['X'].max() + self.eps
+        x_min = df_atributos['X'].min()
 
-        ymax =  dfAtributos['Y'].max() + self.eps
-        ymin =  dfAtributos['Y'].min()
-        root = Node(xMin=xmin, yMin=ymin, xMax=xmax, yMax=ymax, points=pontos)
+        y_max = df_atributos['Y'].max() + self.eps
+        y_min = df_atributos['Y'].min()
+        root = Node(x_min=x_min, y_min=y_min, x_max=x_max, y_max=y_max, points=pontos)
 
     # Chamar Função Para Quebrar regiões e salvar childrens
-        root = self.construirQuadTree(root, 0)
+        root = self.construir_quadtree(root, 0)
 
-    #Selecionar os pontos no quadtree
-        ptsQTree = self.selecionarQuadTree(regiao=root, n=amostras)
+    # Selecionar os pontos no quadtree
+        pts_qtree = self.selecionar_quadtree(regiao=root, n=amostras)
+        self.aux_qt.imprimir_pts(pts_qtree)
 
-        listIdx = []
-        for pt in ptsQTree:
-            listIdx.append(pt.idxDf)
+        list_idx = []
+        for pt in pts_qtree:
+            list_idx.append(pt.idxDf)
 
-        dfImagens = dfAtributos.loc[listIdx, :]
-        #print(dfImagens)
+        df_imagens = df_atributos.loc[list_idx, :]
 
-        listaImagens = dfImagens['image_name'].values.tolist()
+        lista_imagens = df_imagens['image_name'].values.tolist()
 
-        return listaImagens
+        return lista_imagens
 
-    def construirQuadTree(self, regiao, nivel):
+    def construir_quadtree(self, regiao, nivel):
 
-        if len(regiao.getPoints()) <= self.limite or nivel >= self.limProf:
+        if len(regiao.get_points()) <= self.limite or nivel >= self.limProf:
             # print("Região atingiu o limite mínimo de pontos ou nível maximo de profundidade")
             return
         else:
-            listReg = self.auxQt.dividirReg(regiao)
-            listRegSorted = self.auxQt.ordenarRegCresc(listReg)
+            list_reg = self.aux_qt.dividir_reg(regiao)
+            list_reg_sorted = self.aux_qt.ordenar_reg_cresc(list_reg)
 
-            R1 = listRegSorted[0]
-            self.construirQuadTree(R1, nivel + 1)
+            r1 = list_reg_sorted[0]
+            self.construir_quadtree(r1, nivel + 1)
 
-            R2 = listRegSorted[1]
-            self.construirQuadTree(R2, nivel + 1)
+            r2 = list_reg_sorted[1]
+            self.construir_quadtree(r2, nivel + 1)
 
-            R3 = listRegSorted[2]
-            self.construirQuadTree(R3, nivel + 1)
+            r3 = list_reg_sorted[2]
+            self.construir_quadtree(r3, nivel + 1)
 
-            R4 = listRegSorted[3]
-            self.construirQuadTree(R4, nivel + 1)
+            r4 = list_reg_sorted[3]
+            self.construir_quadtree(r4, nivel + 1)
 
-            regiao.childrens = [R1, R2, R3, R4]
+            regiao.childrens = [r1, r2, r3, r4]
             return regiao
 
-    def selecionarQuadTree(self, regiao, n):
-        ptsQTree = []
+    def selecionar_quadtree(self, regiao, n):
+        pts_qtree = []
 
-        if len(regiao.getChildrens()) == 0:
-            ptsQTree = ptsQTree + random.sample(regiao.getPoints(), min(n, len(regiao.getPoints())))
+        if len(regiao.get_childrens()) == 0:
+            pts_qtree = pts_qtree + random.sample(regiao.get_points(), min(n, len(regiao.get_points())))
 
-        elif len(regiao.getPoints()) <= n:
-            ptsQTree = ptsQTree + regiao.getPoints()
+        elif len(regiao.get_points()) <= n:
+            pts_qtree = pts_qtree + regiao.get_points()
 
         elif n < 4:
             faltam = n
             while faltam > 0:
-                R = regiao.getChildrens()[random.randint(1, 4) - 1]
-                if len(R.getPoints()) > 0:
-                    ptSelect = random.choice(regiao.getPoints())
-                    ptsQTree.append(ptSelect)
+                reg = regiao.get_childrens()[random.randint(1, 4) - 1]
+                if len(reg.get_points()) > 0:
+                    pt_select = random.choice(regiao.get_points())
+                    pts_qtree.append(pt_select)
                     # self.selecionarQuadTree(R, 1)
-                    regiao.removePt(ptSelect)
+                    regiao.remove_pt(pt_select)
                     faltam = faltam - 1
 
         else:
-            listReg = regiao.getChildrens()
-            listRegSorted = self.auxQt.ordenarRegCresc(listReg)
+            list_reg = regiao.get_childrens()
+            list_reg_sorted = self.aux_qt.ordenar_reg_cresc(list_reg)
 
             faltam = n
             samplesize = ceil(faltam / 4)
 
-            R1 = listRegSorted[0]
-            ptsQTree = ptsQTree + self.selecionarQuadTree(R1, min(samplesize, len(R1.getPoints())))
-            faltam = faltam - min(samplesize, len(R1.getPoints()))
+            r1 = list_reg_sorted[0]
+            pts_qtree = pts_qtree + self.selecionar_quadtree(r1, min(samplesize, len(r1.get_points())))
+            faltam = faltam - min(samplesize, len(r1.get_points()))
 
             if faltam <= 0:
                 return
 
             samplesize = ceil(faltam / 3)
-            R2 = listRegSorted[1]
-            ptsQTree = ptsQTree + self.selecionarQuadTree(R2, min(samplesize, len(R2.getPoints())))
-            faltam = faltam - min(samplesize, len(R2.getPoints()))
+            r2 = list_reg_sorted[1]
+            pts_qtree = pts_qtree + self.selecionar_quadtree(r2, min(samplesize, len(r2.get_points())))
+            faltam = faltam - min(samplesize, len(r2.get_points()))
 
             if faltam <= 0:
                 return
 
             samplesize = ceil(faltam / 2)
-            R3 = listRegSorted[2]
-            ptsQTree = ptsQTree + self.selecionarQuadTree(R3, min(samplesize, len(R3.getPoints())))
-            faltam = faltam - min(samplesize, len(R3.getPoints()))
+            r3 = list_reg_sorted[2]
+            pts_qtree = pts_qtree + self.selecionar_quadtree(r3, min(samplesize, len(r3.get_points())))
+            faltam = faltam - min(samplesize, len(r3.get_points()))
 
             if faltam <= 0:
                 return
-            R4 = listRegSorted[3]
-            ptsQTree = ptsQTree + self.selecionarQuadTree(R4, faltam)
-            faltam = faltam - min(samplesize, len(R4.getPoints()))
+            r4 = list_reg_sorted[3]
+            pts_qtree = pts_qtree + self.selecionar_quadtree(r4, faltam)
+            faltam = faltam - min(samplesize, len(r4.get_points()))
 
             if faltam > 0:
-                pts = self.selecionarQuadTree(regiao, faltam)
-                ptsQTree = ptsQTree + pts
+                pts = self.selecionar_quadtree(regiao, faltam)
+                pts_qtree = pts_qtree + pts
 
         # print(len(ptsQTree))
 
-        return ptsQTree
-
-
+        return pts_qtree

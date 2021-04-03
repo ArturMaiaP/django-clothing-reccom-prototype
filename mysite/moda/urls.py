@@ -20,7 +20,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', views.index, name = "index"),
-    path('init', views.initgallery, name = "initgallery"),
-    path('more-images', views.moreImages, name = "moreImages"),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('', views.index, name="index"),
+    path('init', views.init_gallery, name="initgallery"),
+    path('more-images', views.more_images, name="moreImages"),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

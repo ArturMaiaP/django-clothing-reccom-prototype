@@ -6,39 +6,44 @@ from django.contrib import messages
 from django_ajax.decorators import ajax
 from django.views.decorators.csrf import csrf_exempt
 
+import pandas as pd
+import os
 from .QuadTree import *
 from mysite.settings import BASE_DIR
 import os
 
 # Create your views here.
 
+
 def index(request):
-	template = loader.get_template('moda/index.html')
-	return HttpResponse(template.render(None, request))
+    template = loader.get_template('moda/index.html')
+    return HttpResponse(template.render(None, request))
 
-def initgallery(request):
-	qt = QuadTree()
-	dfQuadtree = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
 
-	listImgIni = qt.selectImgQuadTree(dfQuadtree, 12)
-	context = {'img_list': listImgIni}
+def init_gallery(request):
+    qt = QuadTree()
+    df_quadtree = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
 
-	template = loader.get_template('moda/infiniteGallery.html')
-	return HttpResponse(template.render(context, request))
+    list_img_ini = qt.select_img_quadtree(df_quadtree, 12)
+    context = {'img_list': list_img_ini}
+
+    template = loader.get_template('moda/infiniteGallery.html')
+    return HttpResponse(template.render(context, request))
+
 
 @csrf_exempt
-def moreImages(request):
-    listRel = request.POST.getlist("listRel[]")
-    listIrrel = request.POST.getlist("listIrrel[]")
+def more_images(request):
+    list_rel = request.POST.getlist("listRel[]")
+    list_irrel = request.POST.getlist("listIrrel[]")
     print("####### IMAGENS ESCOLHIDAS #######")
-    print(listRel)
-    print(listIrrel)
+    print(list_rel)
+    print(list_irrel)
     print("########## ############ #########")
 
     qt = QuadTree()
-    dfQuadtree = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
-    listImgIni = qt.selectImgQuadTree(dfQuadtree, 12)
+    df_quadtree = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
+    list_img_ini = qt.select_img_quadtree(df_quadtree, 12)
 
-    context = {'img_list': listImgIni}
+    context = {'img_list': list_img_ini}
     template = loader.get_template('moda/moreImages.html')
     return HttpResponse(template.render(context, request))
