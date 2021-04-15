@@ -153,7 +153,7 @@ header.masthead h1 {
 }
 
 .imgIn{
-	cursor: zoom-in;
+	cursor: pointer;
 	width: 220px;
 	height: 250px;
 }
