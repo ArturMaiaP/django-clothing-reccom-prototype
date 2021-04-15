@@ -1,18 +1,12 @@
-from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
-from django.http import HttpResponseRedirect
-from django.contrib import messages
-from django_ajax.decorators import ajax
 from django.views.decorators.csrf import csrf_exempt
 
-import pandas as pd
-import os
-from .QuadTree import *
-from mysite.settings import BASE_DIR
-import os
+from .SelectImages import *
+from .Constantes import *
 
 # Create your views here.
+select_images = SelectImages()
 
 
 def index(request):
@@ -21,10 +15,8 @@ def index(request):
 
 
 def init_gallery(request):
-    qt = QuadTree()
-    df_quadtree = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
 
-    list_img_ini = qt.select_img_quadtree(df_quadtree, 12)
+    list_img_ini = select_images.select_images_distance()
     context = {'img_list': list_img_ini}
 
     template = loader.get_template('moda/infiniteGallery.html')
@@ -40,9 +32,10 @@ def more_images(request):
     print(list_irrel)
     print("########## ############ #########")
 
-    qt = QuadTree()
-    df_quadtree = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
-    list_img_ini = qt.select_img_quadtree(df_quadtree, 12)
+    if (len(list_rel) < TAMANHO_MINIMO_SVM) and (len(list_irrel) < TAMANHO_MINIMO_SVM):
+        list_img_ini = select_images.select_images_distance()
+    else:
+        list_img_ini = select_images.select_images_svm()
 
     context = {'img_list': list_img_ini}
     template = loader.get_template('moda/moreImages.html')
