@@ -35,7 +35,7 @@ def more_images(request):
     if (len(list_rel) < TAMANHO_MINIMO_SVM) and (len(list_irrel) < TAMANHO_MINIMO_SVM):
         list_img_ini = select_images.select_images_distance()
     else:
-        list_img_ini = select_images.select_images_svm()
+        list_img_ini = select_images.select_images_svm(list_rel, list_irrel)
 
     context = {'img_list': list_img_ini}
     template = loader.get_template('moda/moreImages.html')
