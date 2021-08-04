@@ -8,8 +8,9 @@ EPS = 0.001
 
 
 def run_svm(df_teste, df_treino):
-    # Remove o Atributo de classe do conjunto de test
-    # df_teste = df_teste.drop(["Class"], axis=1)
+
+    if "Class" in df_teste.columns:
+        df_teste = df_teste.drop(["Class"], axis=1)
 
     # Separa o conjunto de treino em atributos e classe
     x = df_treino.drop(["image_name", "Class"], axis=1)
@@ -44,9 +45,9 @@ def select_img_svm_inverse_transf(df_classified, qtd_img):
     df_zero = df_classified.loc[zero_row_index, :]
     df_zero = calcular_prob_proximo_zero(df_zero)
 
-    list_positivas = select_img_prob_quadtree(df_positive, qtd_img/CLASSES_SVM, LIMITE_RANDOM_INICIAL)
-    list_negativas = select_img_prob_quadtree(df_negative, qtd_img/CLASSES_SVM, LIMITE_RANDOM_INICIAL)
-    list_zero = select_img_prob_quadtree(df_zero, qtd_img/CLASSES_SVM, LIMITE_RANDOM_INICIAL)
+    list_positivas = select_img_prob_quadtree(df_positive, int(qtd_img/CLASSES_SVM), LIMITE_RANDOM_INICIAL)
+    list_negativas = select_img_prob_quadtree(df_negative, int(qtd_img/CLASSES_SVM), LIMITE_RANDOM_INICIAL)
+    list_zero = select_img_prob_quadtree(df_zero, int(qtd_img/CLASSES_SVM), LIMITE_RANDOM_INICIAL)
 
     list_final = list_positivas + list_zero + list_negativas
 
