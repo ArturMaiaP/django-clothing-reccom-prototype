@@ -10,7 +10,7 @@ class SelectImages:
         self.df_teste = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
         self.df_treino = pd.DataFrame(columns=self.df_teste.columns)
 
-    def select_images_distance(self):  # TODO: Receber imagens q ja foram selecionadas
+    def select_images_distance(self):
         qt = QuadTree()
         return qt.select_img_quadtree(self.df_teste, self.sample)
 
