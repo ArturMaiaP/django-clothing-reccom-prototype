@@ -1,0 +1,6 @@
+Flask
+pyjwt
+flask-mysql
+cryptography
+flask-bcrypt
+python-dotenv
