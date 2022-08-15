@@ -4,6 +4,9 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 import os
 import jwt
+import pandas as pd
+
+from .recommender.SelectImages import SelectImages
 
 from dotenv import load_dotenv
 load_dotenv('.env')
@@ -12,6 +15,7 @@ login_manager = LoginManager()
 login_manager.session_protection = "strong"
 
 bcrypt = Bcrypt()
+select_images = SelectImages()
 
 def login_required(f):
     def decorated(*args, **kwargs):
@@ -38,8 +42,11 @@ def create_app():
     login_manager.init_app(app)
     bcrypt.init_app(app)
     
-    from .models import db
+    from .models import db, Product
     db.init_app(app)
+    
+    with app.app_context():
+        select_images.init_app(pd.read_sql(Product.query.statement, db.engine))
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)

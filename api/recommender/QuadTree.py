@@ -13,11 +13,11 @@ class QuadTree:
     def select_img_quadtree(self, df_atributos, amostras):
         pontos = self.aux_qt.extrair_pontos_df(df_atributos)
 
-        x_max = df_atributos['X'].max() + self.eps
-        x_min = df_atributos['X'].min()
+        x_max = df_atributos['x'].max() + self.eps
+        x_min = df_atributos['x'].min()
 
-        y_max = df_atributos['Y'].max() + self.eps
-        y_min = df_atributos['Y'].min()
+        y_max = df_atributos['y'].max() + self.eps
+        y_min = df_atributos['y'].min()
         root = Node(x_min=x_min, y_min=y_min, x_max=x_max, y_max=y_max, points=pontos)
 
     # Chamar Função Para Quebrar regiões e salvar childrens
@@ -33,7 +33,7 @@ class QuadTree:
 
         df_imagens = df_atributos.loc[list_idx, :]
 
-        lista_imagens = df_imagens['image_name'].values.tolist()
+        lista_imagens = df_imagens['name'].values.tolist()
 
         return lista_imagens
 

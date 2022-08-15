@@ -7,11 +7,11 @@ class AuxQt:
 
     @staticmethod
     def extrair_pontos_df(df):
-        # df = self.dfQuadtree.drop(['image_name'],axis=1)
+        # df = self.dfQuadtree.drop(['name'],axis=1)
         obj_pts = []
 
         for index, row in df.iterrows():
-            pt = Point(row['X'], row['Y'], index)
+            pt = Point(row['x'], row['x'], index)
             obj_pts.append(pt)
 
         return obj_pts

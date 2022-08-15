@@ -13,7 +13,7 @@ def run_svm(df_teste, df_treino):
         df_teste = df_teste.drop(["Class"], axis=1)
 
     # Separa o conjunto de treino em atributos e classe
-    x = df_treino.drop(["image_name", "Class"], axis=1)
+    x = df_treino.drop(["name", "Class"], axis=1)
     y = df_treino["Class"]
 
     # Treina o classificador SVM
@@ -21,7 +21,7 @@ def run_svm(df_teste, df_treino):
 
     clf.fit(x, y)
 
-    predict_list = clf.decision_function(df_teste.drop(["image_name"], axis=1))
+    predict_list = clf.decision_function(df_teste.drop(["name"], axis=1))
 
     df_teste["Class"] = predict_list
     df_teste = df_teste.sort_values(by=['Class'], ascending=False)

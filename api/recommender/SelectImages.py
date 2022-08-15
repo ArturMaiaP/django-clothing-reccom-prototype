@@ -1,13 +1,14 @@
 import os
-from mysite.settings import BASE_DIR
 from .Util import *
-from.SvmStochastic import *
+from .SvmStochastic import *
 
 
 class SelectImages:
     def __init__(self):
         self.sample = 12
-        self.df_teste = pd.read_csv(os.path.join(BASE_DIR, 'moda/static/anno/points.txt'))
+        
+    def init_app(self, data):
+        self.df_teste = data
         self.df_treino = pd.DataFrame(columns=self.df_teste.columns)
 
     def select_images_distance(self):
