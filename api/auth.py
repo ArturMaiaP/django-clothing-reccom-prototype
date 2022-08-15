@@ -1,7 +1,9 @@
 from flask import Blueprint, request, jsonify
 
-from api.models.user import get_user_by_email, insert_user
-from . import mysql, bcrypt
+from .models.user import User
+
+from .models import db
+from . import bcrypt
 import datetime
 import jwt
 import os
@@ -15,9 +17,9 @@ def login():
     password = request.json.get('password')
     
     try:
-        user = get_user_by_email(mysql.get_db(), email)
+        user = User.query.filter_by(email=email).first()
         print(user)
-        if user and bcrypt.check_password_hash(user['password'], password):
+        if user and bcrypt.check_password_hash(user.password, password):
             token = jwt.encode({
                 "sub": user['id'],
                 "exp": datetime.datetime.now() + datetime.timedelta(hours=4)
@@ -39,7 +41,9 @@ def signup():
     print(email)
     
     try:
-        insert_user(mysql.get_db(), email, bcrypt.generate_password_hash(password), name)
+        user = User(name=name, email=email, password=bcrypt.generate_password_hash(password))
+        db.session.add(user)
+        db.session.commit()
         return "ok"
     except Exception as e:
         print("[Error] Signup")

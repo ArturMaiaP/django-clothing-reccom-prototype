@@ -1,6 +1,8 @@
 Flask
 pyjwt
-flask-mysql
+Flask-SQLAlchemy
 cryptography
 flask-bcrypt
 python-dotenv
+mysql-connector-python
+pandas

@@ -1,18 +1,13 @@
-def get_user_by_id(db, id):
-    cur = db.cursor()
-    cur.execute("SELECT * FROM user WHERE id=%s", (id,))
-    user = cur.fetchone()
-    cur.close()
-    return user
+from . import db
+from sqlalchemy.sql import func
 
-def get_user_by_email(db, email):
-    cur = db.cursor()
-    cur.execute("SELECT * FROM user WHERE email=%s", (email,))
-    user = cur.fetchone()
-    cur.close()
-    return user
-
-def insert_user(db, email, hashed, name):
-    cur = db.cursor()
-    cur.execute("INSERT INTO user SET email=%s, password=%s, name=%s", (email, hashed, name))
-    db.commit()
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now())
+    
+    def __repr__(self):
+        return f'<User {self.name}>'
