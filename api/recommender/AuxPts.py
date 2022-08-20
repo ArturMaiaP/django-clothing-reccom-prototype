@@ -11,7 +11,7 @@ class AuxQt:
         obj_pts = []
 
         for index, row in df.iterrows():
-            pt = Point(row['x'], row['x'], index)
+            pt = Point(row['x'], row['y'], index)
             obj_pts.append(pt)
 
         return obj_pts
