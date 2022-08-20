@@ -13,7 +13,7 @@ def run_svm(df_teste, df_treino):
         df_teste = df_teste.drop(["Class"], axis=1)
 
     # Separa o conjunto de treino em atributos e classe
-    x = df_treino.drop(["name", "Class"], axis=1)
+    x = df_treino[["x", "y"]]
     y = df_treino["Class"]
 
     # Treina o classificador SVM

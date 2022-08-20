@@ -37,8 +37,6 @@ def signup():
     password = request.json.get('password')
     name = request.json.get('name')
     
-    print(email)
-    
     try:
         user = User(name=name, email=email, password=bcrypt.generate_password_hash(password))
         db.session.add(user)
