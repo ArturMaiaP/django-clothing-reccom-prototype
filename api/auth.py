@@ -41,7 +41,7 @@ def signup():
         user = User(name=name, email=email, password=bcrypt.generate_password_hash(password))
         db.session.add(user)
         db.session.commit()
-        return "ok"
+        return jsonify({"message": "OK"})
     except Exception as e:
         print("[Error] Signup")
         print(e)

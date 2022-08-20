@@ -17,7 +17,7 @@ def like(user):
         pref.liked = True
         db.session.add(pref)
         db.session.commit()
-        return "ok"
+        return jsonify({"message": "OK"})
     return jsonify({"message": "Product invalid."}), 422
 
 @recommend.route('/dislike', methods=['POST'])
@@ -31,7 +31,7 @@ def dislike(user):
         pref.liked = False
         db.session.add(pref)
         db.session.commit()
-        return "ok"
+        return jsonify({"message": "OK"})
     return jsonify({"message": "Product invalid."}), 422
 
 @recommend.route('/recommend', methods=['GET'])
