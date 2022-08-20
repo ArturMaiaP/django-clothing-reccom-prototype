@@ -1,4 +1,5 @@
 Flask
+Flask-cors
 pyjwt
 Flask-SQLAlchemy
 cryptography

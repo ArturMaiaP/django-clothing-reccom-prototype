@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from api.models.user import User
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
+from flask_cors import CORS
 import os
 import jwt
 import pandas as pd
@@ -16,6 +17,7 @@ login_manager.session_protection = "strong"
 
 bcrypt = Bcrypt()
 select_images = SelectImages()
+cors = CORS()
 
 def login_required(f):
     def decorated(*args, **kwargs):
@@ -41,6 +43,7 @@ def create_app():
     
     login_manager.init_app(app)
     bcrypt.init_app(app)
+    cors.init_app(app)
     
     from .models import db, Product
     db.init_app(app)
