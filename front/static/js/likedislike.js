@@ -42,7 +42,10 @@ function getRecommendation(target) {
       }
     },
     error: function (request) {
-      alert(request.responseText);
+      if(request.status == 401){
+        localStorage.removeItem("User");
+        window.localtion.replace("/login.html");
+      }
     },
   });
 }
