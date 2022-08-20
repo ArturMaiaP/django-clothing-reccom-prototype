@@ -49,7 +49,7 @@ def create_app():
     db.init_app(app)
     
     with app.app_context():
-        select_images.init_app(pd.read_sql(Product.query.statement, db.engine))
+        select_images.init_app(pd.read_sql(Product.query.statement, db.engine)[["name", "x", "y"]])
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
