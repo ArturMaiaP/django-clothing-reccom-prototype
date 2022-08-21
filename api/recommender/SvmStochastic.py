@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn import svm
 from .QuadTree import *
 
@@ -33,15 +34,18 @@ def run_svm(df_teste, df_treino):
 
 def select_img_svm_inverse_transf(df_classified, qtd_img):
 
-    positive_row_index = df_classified.loc[df_classified['Class'] > 0.3].index
+    q25 = np.percentile(df_classified['Class'], 25)
+    q75 = np.percentile(df_classified['Class'], 75)
+    
+    positive_row_index = df_classified.loc[df_classified['Class'] > q75].index
     df_positive = df_classified.loc[positive_row_index, :]
     df_positive = calcular_prob_nao_zero(df_positive)
 
-    negative_row_index = df_classified.loc[df_classified['Class'] < -0.3].index
+    negative_row_index = df_classified.loc[df_classified['Class'] < q25].index
     df_negative = df_classified.loc[negative_row_index, :]
     df_negative = calcular_prob_nao_zero(df_negative)
 
-    zero_row_index = df_classified.loc[(df_classified['Class'] <= 0.3) & (df_classified['Class'] >= -0.3)].index
+    zero_row_index = df_classified.loc[(df_classified['Class'] <= q75) & (df_classified['Class'] >= q25)].index
     df_zero = df_classified.loc[zero_row_index, :]
     df_zero = calcular_prob_proximo_zero(df_zero)
 
