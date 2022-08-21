@@ -44,7 +44,7 @@ function getRecommendation(target) {
     error: function (request) {
       if(request.status == 401){
         localStorage.removeItem("User");
-        window.localtion.replace("/login.html");
+        window.location.replace("/login.html");
       }
     },
   });
