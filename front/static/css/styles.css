@@ -295,3 +295,28 @@ fieldset:disabled a.btn {
 #infiniteDiv{
     padding: 20px 0px 120px 0px;
 }
+
+.chat {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2000;
+}
+
+.btn-chat {
+  margin-top: 1rem;
+  float: right;
+  border-radius: 50%;
+  width: 2.8rem;
+  height: 2.8rem;
+  transform: scale(1.2);
+}
+
+.chat .card-body {
+  min-height: 40vh;
+  transition: all 1s;
+}
+
+.chat .card-footer {
+  padding: .5rem;
+}
