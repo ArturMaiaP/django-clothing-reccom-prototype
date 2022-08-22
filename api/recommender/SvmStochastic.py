@@ -125,14 +125,14 @@ def select_img_prob_quadtree(df, samples, random_min):
                 df_temp = df.loc[df['SomaPj'] == soma]
                 # print(dfTemp)
                 # newRows = pd.concat([newRows, dfTemp])
-                new_rows = new_rows.append(df_temp)
+                new_rows = pd.concat([new_rows, df_temp])
                 # idx.append(df.loc[df['SomaPj']==soma].index)
                 list_soma.remove(soma)
                 df = df.drop(df.loc[df['SomaPj'] == soma].index, axis=0)
                 break
     if len(new_rows) < samples:
         temp = select_img_prob_quadtree(df, samples - len(new_rows), (df["SomaPj"].min() - EPS))
-        new_rows = pd.concat([new_rows, temp], False)
+        new_rows = pd.concat([new_rows, temp])
 
     if len(new_rows) > 0:
         # print("entrou aqui")

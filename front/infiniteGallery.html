@@ -20,6 +20,7 @@
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/config.js"></script>
     <script src="/static/js/likedislike.js"></script>
+    <script src="/static/js/chat.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
       rel="stylesheet"
@@ -38,10 +39,15 @@
     <title>Images Gallery</title>
     <script>
       var user = localStorage.getItem("User");
+      var chatId = sessionStorage.getItem("Chat");
       if (!user) {
         window.location.replace("/login.html");
       } else {
         user = JSON.parse(user);
+      }
+
+      if (!chatId) {
+        chatInit();
       }
     </script>
   </head>
@@ -69,18 +75,20 @@
     </div>
 
     <div class="chat">
-      <div id="chat-card" class="card text-bg-light collapse">
+      <div id="chat-card" class="card text-bg-light collapse border">
         <div class="card-header">
           <h2 class="m-0">Chat</h2>
         </div>
         <div id="chat-target" class="card-body">Teste</div>
         <div class="card-footer">
-          <div class="input-group">
-            <input type="text" class="form-control" />
-            <button class="btn btn-primary" type="button">
-              <span class="fas fa-plane"></span>
-            </button>
-          </div>
+          <form onsubmit="chat(event);">
+            <div class="input-group">
+              <input id="message" type="text" class="form-control" />
+              <button class="btn btn-primary" type="submit">
+                <span class="fas fa-plane"></span>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <button

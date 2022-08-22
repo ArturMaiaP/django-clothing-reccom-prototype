@@ -8,6 +8,7 @@ import jwt
 import pandas as pd
 
 from .recommender.SelectImages import SelectImages
+from .chatbot import Chatbot
 
 from dotenv import load_dotenv
 load_dotenv('.env')
@@ -15,6 +16,7 @@ load_dotenv('.env')
 login_manager = LoginManager()
 login_manager.session_protection = "strong"
 
+chatbotInstance = Chatbot()
 bcrypt = Bcrypt()
 select_images = SelectImages()
 cors = CORS()
@@ -59,5 +61,8 @@ def create_app():
     
     from .product import product as product_blueprint
     app.register_blueprint(product_blueprint)
+    
+    from .chat import chatbot_blueprint
+    app.register_blueprint(chatbot_blueprint)
 
     return app

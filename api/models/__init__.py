@@ -5,3 +5,4 @@ db = SQLAlchemy()
 from .user import *
 from .product import *
 from .preference import *
+from .chat import *

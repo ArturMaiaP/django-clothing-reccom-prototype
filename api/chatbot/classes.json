@@ -1,0 +1,9 @@
+{
+  "0": "ASK:GET",
+  "1": "INFORM:DISAMBIGUATE",
+  "2": "INFORM:GET",
+  "3": "INFORM:REFINE",
+  "4": "REQUEST:ADD_TO_CART",
+  "5": "REQUEST:COMPARE",
+  "6": "REQUEST:GET"
+}

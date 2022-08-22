@@ -7,7 +7,8 @@ Create the virtual environment, activate and install the required packages.
 ```bash
 python3 -m venv venv
 . venv/bin/activate
-pip install -r requirements.tx
+pip install -r requirements.txt
+spacy download en_core_web_sm
 ```
 
 Copy the .env and edit the necessary variables.
