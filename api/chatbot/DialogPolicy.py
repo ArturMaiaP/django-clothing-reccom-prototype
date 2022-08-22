@@ -6,19 +6,19 @@ class DialogPolicy:
     def __init__(self):
         self.answers = [
             #ASK:GET
-            [""],
+            ["ANSWER to ASK:GET"],
             #INFORM:DISAMBIGUATE
-            [""],
+            ["ANSWER to INFORM:DISAMBIGUATE"],
             #INFORM:GET
-            [""],
+            ["ANSWER to INFORM:GET"],
             #INFORM:REFINE
-            [""],
+            ["ANSWER to INFORM:REFINE"],
             #REQUEST:ADD_TO_CART
             ["Of course. I'll add now.", "Yes, I'll update your cart for you.", "Nice choice, I'll add them to your cart."],
             #REQUEST:COMPARE
-            [""],
+            ["ANSWER to REQUEST:COMPARE"],
             #REQUEST:GET
-            [""]
+            ["ANSWER to REQUEST:GET"]
         ]
         self.slots = [
             #ASK:GET
@@ -58,7 +58,7 @@ class DialogPolicy:
         
         self.process_slots(state, intent_index, entities)
         
-        response = self.response(intent_index)
+        resp = [{"action": "answer", "text": self.response(intent_index)}]
         if elapsed >= 30:
-            return {"action": "recommend"}
-        return {"action": "answer", "text": response}
+            resp.append({"action": "recommend"})
+        return resp
