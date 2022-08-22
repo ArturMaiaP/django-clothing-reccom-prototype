@@ -73,24 +73,31 @@
         <div class="card-header">
           <h2 class="m-0">Chat</h2>
         </div>
-        <div class="card-body">
-          Teste
-        </div>
+        <div id="chat-target" class="card-body">Teste</div>
         <div class="card-footer">
           <div class="input-group">
-            <input type="text" class="form-control">
-            <button class="btn btn-primary" type="button"><span class="fas fa-plane"></span></button>
+            <input type="text" class="form-control" />
+            <button class="btn btn-primary" type="button">
+              <span class="fas fa-plane"></span>
+            </button>
           </div>
         </div>
       </div>
-      <button class="btn btn-chat btn-primary" data-bs-toggle="collapse" data-bs-target="#chat-card" ><span class="fas fa-message"></span></button>
+      <button
+        class="btn btn-chat btn-primary"
+        data-bs-toggle="collapse"
+        data-bs-target="#chat-card"
+      >
+        <span class="fas fa-message"></span>
+      </button>
     </div>
 
     <script>
       $(window).scroll(function () {
         if (
-          $(window).scrollTop() ==
-          $(document).height() - $(window).height()
+          Math.abs(
+            $(window).scrollTop() - ($(document).height() - $(window).height())
+          ) < 1
         ) {
           getRecommendation("#infiniteDiv");
         }
