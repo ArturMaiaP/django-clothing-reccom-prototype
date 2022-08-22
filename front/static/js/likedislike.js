@@ -27,12 +27,12 @@ function getRecommendation(target) {
                                 </div> -->
                             </div>
 
-                            <div class="row d-flex justify-content-center">
+                            <div class="row">
                                 <div class="btn-group">
-                                    <input type="radio" class="btn-check" id="like${counter}" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="btn${counter}" id="like${counter}" autocomplete="off">
                                     <label class="btn btn-success" for="like${counter}" onclick="like('${i}');"><span class="fa fa-thumbs-up"></span></label>
 
-                                    <input type="radio" class="btn-check" id="dislike${counter}" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="btn${counter}" id="dislike${counter}" autocomplete="off">
                                     <label class="btn btn-danger" for="dislike${counter}" onclick="dislike('${i}');"><span class="fa fa-thumbs-down"></span></label>
                                 </div>
                             </div>
