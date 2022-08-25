@@ -7,4 +7,4 @@ class EntityExtractor:
         self.nlp = spacy.load('en_core_web_sm')
     def extract(self, text):
         doc = self.nlp(text)
-        return doc.ents
+        return [[ent.text,  ent.label_] for ent in doc.ents]

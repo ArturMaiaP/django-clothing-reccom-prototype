@@ -50,8 +50,8 @@ class DialogPolicy:
         
         #Fill slots                
         for ent in entities:
-            if ent.label_ in state['slots']:
-                state['slots'][ent.label_].append(ent.text)
+            if ent[1] in state['slots']:
+                state['slots'][ent[1]].append(ent[0])
     
     def answer(self, state, text, intent, entities):
         intent_index = np.argmax(intent)
