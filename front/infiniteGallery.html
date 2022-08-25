@@ -71,34 +71,32 @@
             </h4>
         </div>
         -->
-      <div class="row row-content" id="infiniteDiv"></div>
+        <div class="row">
+          <div class="col-8">
+            <div class="row row-content" id="infiniteDiv"></div>
+          </div>
+          <div class="col-4 p-5">
+              <div id="chat-card" class="card text-bg-light border">
+                <div class="card-header">
+                  <h2 class="m-0">Chat</h2>
+                </div>
+                <div id="chat-target" class="card-body"  style="height: 50vh"></div>
+                <div class="card-footer">
+                  <form onsubmit="chat(event);">
+                    <div class="input-group">
+                      <input id="message" type="text" class="form-control" />
+                      <button class="btn btn-primary" type="submit">
+                        <span class="fas fa-plane"></span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
 
-    <div class="chat">
-      <div id="chat-card" class="card text-bg-light collapse border">
-        <div class="card-header">
-          <h2 class="m-0">Chat</h2>
-        </div>
-        <div id="chat-target" class="card-body"></div>
-        <div class="card-footer">
-          <form onsubmit="chat(event);">
-            <div class="input-group">
-              <input id="message" type="text" class="form-control" />
-              <button class="btn btn-primary" type="submit">
-                <span class="fas fa-plane"></span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <button
-        class="btn btn-chat btn-primary"
-        data-bs-toggle="collapse"
-        data-bs-target="#chat-card"
-      >
-        <span class="fas fa-message"></span>
-      </button>
-    </div>
+    
 
     <script>
       $(window).scroll(function () {
@@ -112,6 +110,10 @@
       });
       $(window).ready(function () {
         getRecommendation("#infiniteDiv");
+        setTimeout(() => {
+          insertChat(false, "Hello, how can I help you?");
+        },2000);
+        
       });
     </script>
   </body>
