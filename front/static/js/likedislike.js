@@ -14,13 +14,13 @@ function getRecommendation(target) {
             <div class="card col-12">
               <div class="card-body">
                 <div class="row">
-                  <a class="d-flex justify-content-center" data-toggle="modal" data-target="#modal${counter}}">
+                  <a class="d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#modal${counter}">
                     <img class="imgIn img-fluid" src= "/static/${i}">
                   </a>
-                  <div id="modal${counter}}" class="modal fade">
+                  <div id="modal${counter}" class="modal fade">
                     <div class="modal-dialog modal-lg" role="content">
                       <div class="modal-content">
-                        <span data-dismiss="modal" class="close text-right">&times;</span>
+                        <span data-bs-dismiss="modal" class="close text-right">&times;</span>
                         <img class="imgZoom align-self-center" src="/static/${i}" >
                       </div>
                     </div>

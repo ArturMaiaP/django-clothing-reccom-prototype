@@ -46,3 +46,16 @@ def recomm(user):
         list_img_ini = select_images.select_images_svm(liked, disliked)
     
     return jsonify({'img_list': list_img_ini})
+
+@recommend.route('/recommend/best', methods=['GET'])
+@login_required
+def best(user):
+    liked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=1, liked=1).all()]
+    disliked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=1, liked=0).all()]
+    
+    if (len(liked) < TAMANHO_MINIMO_SVM) or (len(disliked) < TAMANHO_MINIMO_SVM):
+        return jsonify({'message': 'fail'})
+    else:
+        return jsonify({'img': select_images.select_best_svm(liked, disliked), 'text': "What do you think about this one?"})
+    
+    
