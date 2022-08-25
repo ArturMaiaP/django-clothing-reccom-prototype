@@ -8,7 +8,7 @@ class DialogPolicy:
             #ASK:GET
             ["ANSWER to ASK:GET"],
             #INFORM:DISAMBIGUATE
-            ["ANSWER to INFORM:DISAMBIGUATE"],
+            ["Which do you mean?", "Which one?", "Which one exactly?", "Which one again?"],
             #INFORM:GET
             ["ANSWER to INFORM:GET"],
             #INFORM:REFINE
@@ -40,6 +40,9 @@ class DialogPolicy:
     def response(self, i):
         return random.choice(self.answers[i])
     
+    def recommend_text(self):
+        return random.choice(["Perhaps you'd like this one?", "What do you think about this one?"])
+    
     def process_slots(self,state, i,entities):
         for slot in self.slots[i]:
             if slot not in state['slots']:
@@ -60,5 +63,5 @@ class DialogPolicy:
         
         resp = [{"action": "answer", "text": self.response(intent_index)}]
         if elapsed >= 30:
-            resp.append({"action": "recommend"})
+            resp.append({"action": "recommend", "text": self.recommend_text()})
         return resp

@@ -22,11 +22,10 @@ function chat(e) {
     success: function (data) {
       for (const action of data.actions) {
         switch (action.action) {
-          case "answer":
-            insertChat(false, action.text);
-            break;
           case "recommend":
             getBest();
+          case "answer":
+            insertChat(false, action.text);
             break;
         }
       }
@@ -75,7 +74,6 @@ function getBest() {
     success: function (data) {
       if (!data.message) {
         insertRecomm(data.img);
-        insertChat(false, data.text);
       }
     },
     error: function (request) {

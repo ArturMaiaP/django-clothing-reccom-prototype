@@ -56,6 +56,6 @@ def best(user):
     if (len(liked) < TAMANHO_MINIMO_SVM) or (len(disliked) < TAMANHO_MINIMO_SVM):
         return jsonify({'message': 'fail'})
     else:
-        return jsonify({'img': select_images.select_best_svm(liked, disliked), 'text': "What do you think about this one?"})
+        return jsonify({'img': select_images.select_best_svm(liked, disliked)})
     
     
