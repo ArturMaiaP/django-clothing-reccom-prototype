@@ -154,8 +154,7 @@ header.masthead h1 {
 
 .imgIn{
 	cursor: pointer;
-	width: 220px;
-	height: 250px;
+	height: 25vh;
 }
 
 .modal{
@@ -300,6 +299,11 @@ fieldset:disabled a.btn {
   bottom: 2rem;
   right: 2rem;
   z-index: 2000;
+}
+
+#chat-card {
+  position: relative;
+  top: 0;
 }
 
 .btn-chat {

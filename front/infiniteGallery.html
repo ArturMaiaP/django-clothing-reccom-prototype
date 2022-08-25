@@ -107,6 +107,9 @@
         ) {
           getRecommendation("#infiniteDiv");
         }
+        $('#chat-card').css({
+          "top": ($(window).scrollTop())+"px"
+        })
       });
       $(window).ready(function () {
         getRecommendation("#infiniteDiv");
