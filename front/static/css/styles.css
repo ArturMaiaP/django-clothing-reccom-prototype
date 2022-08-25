@@ -313,6 +313,8 @@ fieldset:disabled a.btn {
 
 .chat .card-body {
   min-height: 40vh;
+  height: 40vh;
+  overflow: hidden auto;
   transition: all 1s;
 }
 
