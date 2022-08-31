@@ -29,9 +29,7 @@ function chat(e) {
       for (const action of data.actions) {
         switch (action.action) {
           case "recommend":
-            getRecommendation('#infiniteDiv');
-
-            $.scrollTop($("#infiniteDiv").prop("scrollHeight"));
+            getRecommendation('#infiniteDiv', true);
           case "answer":
             insertChat(false, action.text);
             break;

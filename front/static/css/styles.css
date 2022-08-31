@@ -380,3 +380,12 @@ fieldset:disabled a.btn {
   border-width: 13px 13px 0 0;
   border-color: var(--bs-primary) transparent transparent transparent;           
 }  
+
+.group {
+  padding: 1rem;
+}
+
+.group.active {
+  background-color: rgba(0,0,0,0.1);
+  transition: background-color 1s 1s ease;
+}
