@@ -154,7 +154,10 @@ header.masthead h1 {
 
 .imgIn{
 	cursor: pointer;
-	height: 25vh;
+	height: 15vh;
+}
+.imgIn img{
+	max-height: 100%;
 }
 
 .modal{

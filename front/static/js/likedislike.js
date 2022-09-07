@@ -17,8 +17,8 @@ function getRecommendation(target, scrollTo = false) {
               <div class="card col-12">
                 <div class="card-body">
                   <div class="row">
-                    <a class="d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#modal${counter}">
-                      <img class="imgIn img-fluid" src= "/static/${i}">
+                    <a class="d-flex justify-content-center imgIn" data-bs-toggle="modal" data-bs-target="#modal${counter}">
+                      <img class="img-fluid align-middle " src= "/static/${i}">
                     </a>
                     <div id="modal${counter}" class="modal fade">
                       <div class="modal-dialog modal-lg" role="content">
