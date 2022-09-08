@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
+import json
 
 from . import login_required, select_images
-from .models import db, Preference, Product
+from .models import db, Preference, Product, Chat
 from .recommender.Constantes import *
 
 recommend = Blueprint('recommend', __name__)
@@ -39,11 +40,19 @@ def dislike(user):
 def recomm(user):
     liked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=1, liked=1).all()]
     disliked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=1, liked=0).all()]
+
+    id = request.args.get('id')
+    slots = None
+    if id:
+        session = Chat.query.filter_by(id=id, user_id=user.id).first()
+        if session:
+            state = json.loads(session.session)
+            slots = state['slots']
     
     if (len(liked) < TAMANHO_MINIMO_SVM) or (len(disliked) < TAMANHO_MINIMO_SVM):
-        list_img_ini = select_images.select_images_distance()
+        list_img_ini = select_images.select_images_distance(slots)
     else:
-        list_img_ini = select_images.select_images_svm(liked, disliked)
+        list_img_ini = select_images.select_images_svm(liked, disliked, slots)
     
     return jsonify({'img_list': list_img_ini})
 

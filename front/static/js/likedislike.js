@@ -1,9 +1,9 @@
 var counter = 0;
 var group = 0;
-function getRecommendation(target, scrollTo = false) {
+function getRecommendation(target, fromChat = false) {
   $.ajax({
     method: "GET",
-    url: API_URL + "/recommend",
+    url: API_URL + "/recommend" + (chatId ? "?id=" + chatId : ""),
     headers: {
       Authorization: "Bearer " + user.token,
     },
@@ -11,8 +11,8 @@ function getRecommendation(target, scrollTo = false) {
       group++;
       var html = `<div class="row group" id="group-${group}">`;
       for (const i of data.img_list) {
-          counter++;
-          html+=`
+        counter++;
+        html += `
             <div class="d-flex col-sm-3 column-padding">
               <div class="card col-12">
                 <div class="card-body">
@@ -39,18 +39,18 @@ function getRecommendation(target, scrollTo = false) {
                   </div>
                 </div>
               </div>
-            </div>`
+            </div>`;
       }
-      html+="</div>";
+      html += "</div>";
       $(target).append(html);
-      if(scrollTo){
-        $('.group.active').removeClass("active");
+      if (fromChat) {
+        $(".group.active").removeClass("active");
         $(`#group-${group}`).get(0).scrollIntoView();
         $(`#group-${group}`).addClass("active");
       }
     },
     error: function (request) {
-      if(request.status == 401){
+      if (request.status == 401) {
         localStorage.removeItem("User");
         window.location.replace("/login.html");
       }

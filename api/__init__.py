@@ -52,7 +52,7 @@ def create_app():
     
     with app.app_context():
         try:
-            data = pd.read_sql(Product.query.statement, db.engine)[["name", "x", "y"]]
+            data = pd.read_sql(Product.query.statement, db.engine)
             select_images.init_app(data)
         except Exception as e:
             print(e)
