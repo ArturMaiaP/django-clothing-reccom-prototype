@@ -52,7 +52,7 @@ class DialogPolicy:
         return responses
     
     def recommend_text(self):
-        return random.choice(["Perhaps you'd like this one?", "What do you think about this one?"])
+        return random.choice(["Perhaps you'd like one of these?", "What do you think about one of these?"])
     
     def process_slots(self,state, i,entities):
         for slot in self.slots[i]:
