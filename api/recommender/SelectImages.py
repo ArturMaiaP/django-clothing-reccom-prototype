@@ -12,13 +12,14 @@ class SelectImages:
 
     def select_images_distance(self, slots=None):
         qt = QuadTree()
+        df = self.df_teste
+        
         if slots:
-            df = self.df_teste
             for key in slots:
                 for value in slots[key]:
                     df = df[df[value] == 1]
-            return qt.select_img_quadtree(df, self.sample)
-        return qt.select_img_quadtree(self.df_teste, self.sample)
+                    
+        return qt.select_img_quadtree(df, self.sample)
 
     def select_images_svm(self, list_rel, list_irrel, slots=None):
         df = self.df_teste
