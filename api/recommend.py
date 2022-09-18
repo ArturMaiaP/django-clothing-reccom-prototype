@@ -38,8 +38,8 @@ def dislike(user):
 @recommend.route('/recommend', methods=['GET'])
 @login_required
 def recomm(user):
-    liked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=1, liked=1).all()]
-    disliked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=1, liked=0).all()]
+    liked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=user.id, liked=1).all()]
+    disliked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=user.id, liked=0).all()]
 
     id = request.args.get('id')
     slots = None
