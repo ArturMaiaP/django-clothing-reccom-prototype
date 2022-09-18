@@ -61,7 +61,7 @@ class DialogPolicy:
         
         #Fill slots                
         for ent in entities:
-            if ent[1] in state['slots']:
+            if ent[1] in state['slots'] and ent[0] not in state['slots'][ent[1]]:
                 state['slots'][ent[1]].append(ent[0])
     
     def answer(self, state, text, intent, entities):
