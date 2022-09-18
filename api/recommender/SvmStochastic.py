@@ -22,7 +22,7 @@ def run_svm(df_teste, df_treino):
 
     clf.fit(x, y)
 
-    predict_list = clf.decision_function(df_teste.drop(["name"], axis=1))
+    predict_list = clf.decision_function(df_teste[['x','y']])
 
     df_teste["Class"] = predict_list
     df_teste = df_teste.sort_values(by=['Class'], ascending=False)
