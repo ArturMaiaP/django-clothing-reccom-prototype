@@ -1,6 +1,7 @@
 import os
 from .Util import *
 from .SvmStochastic import *
+from .Constantes import TAMANHO_MINIMO_SVM
 
 
 class SelectImages:
@@ -29,6 +30,10 @@ class SelectImages:
                     df = df[df[value] == 1]
 
         df_treino = get_df_treino(df, list_rel, list_irrel)
+        
+        if len(df_treino) < TAMANHO_MINIMO_SVM:
+            return self.select_images_distance(slots)
+        
         df = update_df_teste(df_treino, df)
 
         df_classified = run_svm(df, df_treino)
