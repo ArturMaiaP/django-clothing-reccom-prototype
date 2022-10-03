@@ -1,6 +1,7 @@
 import { ImageList, Tab, Tabs, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import Chat from "./Chat";
 import LikedPhoto from "./LikedPhoto";
 
 interface TabPanelProps {
@@ -14,13 +15,14 @@ function TabPanel(props: TabPanelProps) {
 
   return (
     <Box
+      sx={{ display: value === index?'flex': 'none', flexGrow: 1 }}
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ p: 3, flexGrow: 1, display: "flex", flexDirection: "column" }}>{children}</Box>}
     </Box>
   );
 }
@@ -47,14 +49,16 @@ export default function TabMenu() {
           <Tab label="Chat" aria-controls="chat-tab" />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        <ImageList cols={5} sx={{ overflowY: "auto", height: "100%" }}>
-          {data.map((item, index) => (
-            <LikedPhoto item={item} key={index} />
-          ))}
-        </ImageList>
-      </TabPanel>
-      <TabPanel value={value} index={1}></TabPanel>
+        <TabPanel value={value} index={0}>
+          <ImageList cols={5} sx={{ overflowY: "auto"}}>
+            {data.map((item, index) => (
+              <LikedPhoto item={item} key={index} />
+            ))}
+          </ImageList>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Chat />
+        </TabPanel>
     </>
   );
 }

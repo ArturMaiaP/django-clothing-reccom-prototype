@@ -35,7 +35,7 @@ function Layout() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Grid container sx={{height: "100vh"}}>
-        <Grid item xs={4} sx={{backgroundColor: "white", borderRight: 1, borderColor: "lightgray"}}>
+        <Grid item xs={4} sx={{display: "flex", flexDirection: "column", backgroundColor: "white", borderRight: 1, borderColor: "lightgray"}}>
           <AppBar position="relative">
             <Toolbar>
               <Avatar
