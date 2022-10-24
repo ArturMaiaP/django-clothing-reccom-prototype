@@ -62,9 +62,14 @@ def best(user):
     liked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=1, liked=1).all()]
     disliked = [p.name for p in Product.query.join(Preference,aliased=True).filter_by(user_id=1, liked=0).all()]
     
-    if (len(liked) < TAMANHO_MINIMO_SVM) or (len(disliked) < TAMANHO_MINIMO_SVM):
-        return jsonify({'message': 'fail'})
-    else:
-        return jsonify({'img': select_images.select_best_svm(liked, disliked)})
+    id = request.args.get('id')
+    slots = None
+    if id:
+        session = Chat.query.filter_by(id=id, user_id=user.id).first()
+        if session:
+            state = json.loads(session.session)
+            slots = state['slots']
+            
+    jsonify({'img': select_images.select_best_svm(liked, disliked, slots)})
     
     
