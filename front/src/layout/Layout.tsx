@@ -17,14 +17,13 @@ import TabMenu from "../components/TabMenu";
 
 const theme = createTheme({
   palette: {
-    background: {default: "#f3fafc"}
-  }
+    background: { default: "#f3fafc" },
+  },
 });
 
 function Layout() {
   const user = JSON.parse(
-    localStorage.getItem("User") ||
-      '{"name": "André", "email": "arbezerra@gmail.com"}'
+    localStorage.getItem("User") || sessionStorage.getItem("User") || "null"
   );
 
   if (!user) {
@@ -34,8 +33,18 @@ function Layout() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Grid container sx={{height: "100vh"}}>
-        <Grid item xs={4} sx={{display: "flex", flexDirection: "column", backgroundColor: "white", borderRight: 1, borderColor: "lightgray"}}>
+      <Grid container sx={{ height: "100vh" }}>
+        <Grid
+          item
+          xs={4}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            backgroundColor: "white",
+            borderRight: 1,
+            borderColor: "lightgray",
+          }}
+        >
           <AppBar position="relative">
             <Toolbar>
               <Avatar
@@ -46,7 +55,12 @@ function Layout() {
                   MD5(user.email.toLowerCase())
                 }
               />
-              <Typography variant="h6" color="inherit" noWrap  sx={{ flexGrow: 1 }}>
+              <Typography
+                variant="h6"
+                color="inherit"
+                noWrap
+                sx={{ flexGrow: 1 }}
+              >
                 {user.name}
               </Typography>
               <IconButton aria-label="settings" color="default">

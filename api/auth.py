@@ -15,7 +15,7 @@ auth = Blueprint('auth', __name__)
 def login():
     email = request.json.get('email')
     password = request.json.get('password')
-    
+
     try:
         user = User.query.filter_by(email=email).first()
         if user and bcrypt.check_password_hash(user.password, password):
@@ -23,7 +23,11 @@ def login():
                 "sub": user.id,
                 "exp": datetime.datetime.now() + datetime.timedelta(hours=4)
             }, os.getenv('SECRET_KEY'))
-            return jsonify({"token": token})
+            return jsonify({"user": {
+                "token": token,
+                "name": user.name,
+                "email": user.email
+            }})
         else:
             return jsonify({"message": "Email or password is invalid."}), 422
     except Exception as e:
@@ -31,14 +35,16 @@ def login():
         print(e)
     return jsonify({"message": "Some error."}), 500
 
+
 @auth.route('/signup', methods=['POST'])
 def signup():
     email = request.json.get('email')
     password = request.json.get('password')
     name = request.json.get('name')
-    
+
     try:
-        user = User(name=name, email=email, password=bcrypt.generate_password_hash(password))
+        user = User(name=name, email=email,
+                    password=bcrypt.generate_password_hash(password))
         db.session.add(user)
         db.session.commit()
         return jsonify({"message": "OK"})

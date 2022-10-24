@@ -9,19 +9,49 @@ import {
   Link,
   TextField,
   Typography,
+  Alert,
 } from "@mui/material";
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link as RouterLink, Navigate } from "react-router-dom";
+import config from "../config";
 
 function LoginPage() {
+  const [user, setUser] = useState(null);
+  const [errorMessage, setError] = useState("");
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const remember = data.get("remember");
+    fetch(config.apiUrl + "/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({
+        email: data.get("email"),
+        password: data.get("password"),
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.user) {
+          if (remember) {
+            localStorage.setItem("User", JSON.stringify(data.user));
+          } else {
+            sessionStorage.setItem("User", JSON.stringify(data.user));
+          }
+          setUser(data.user);
+        } else {
+          setError(data.message);
+        }
+      });
   };
+
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <Box
@@ -60,9 +90,12 @@ function LoginPage() {
           autoComplete="current-password"
         />
         <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
+          control={<Checkbox name="remember" value="1" color="primary" />}
           label="Remember me"
         />
+        {errorMessage && (
+          <Alert severity="error">{errorMessage}</Alert>
+        )}
         <Button
           type="submit"
           fullWidth
