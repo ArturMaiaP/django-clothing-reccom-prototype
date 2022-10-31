@@ -101,7 +101,7 @@ class Data:
 
     @ classmethod
     def load(cls, path):
-        sys.path.append(os.path.join(os.getcwd(), "./api/chatbot"))
+        sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
         return pickle.load(open(path, 'rb'))
 
     def __str__(self):
