@@ -11,7 +11,7 @@ from .recommender.SelectImages import SelectImages
 from .chatbot import Chatbot
 
 from dotenv import load_dotenv
-load_dotenv('.env')
+load_dotenv(os.path.join(os.path.dirname(__file__), "../.env"))
 
 login_manager = LoginManager()
 login_manager.session_protection = "strong"
