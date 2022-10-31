@@ -1,6 +1,7 @@
 var counter = 0;
 var group = 0;
 function getRecommendation(target, fromChat = false) {
+  console.log(user);
   $.ajax({
     method: "GET",
     url: API_URL + "/recommend" + (chatId ? "?id=" + chatId : ""),
@@ -18,13 +19,13 @@ function getRecommendation(target, fromChat = false) {
                 <div class="card-body">
                   <div class="row">
                     <a class="d-flex justify-content-center imgIn" data-bs-toggle="modal" data-bs-target="#modal${counter}">
-                      <img class="img-fluid align-middle " src= "/static/${i}">
+                      <img class="img-fluid align-middle " src= "https://static.andrebezerra.com/${i}">
                     </a>
                     <div id="modal${counter}" class="modal fade">
                       <div class="modal-dialog modal-lg" role="content">
                         <div class="modal-content">
                           <span data-bs-dismiss="modal" class="close text-right">&times;</span>
-                          <img class="imgZoom align-self-center" src="/static/${i}" >
+                          <img class="imgZoom align-self-center" src="https://static.andrebezerra.com/${i}" >
                         </div>
                       </div>
                     </div>

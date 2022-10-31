@@ -117,13 +117,13 @@ function insertRecomm(product) {
           <div class="text text-l">
             <div class="row">
               <a class="d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#chat${product.id}">
-                <img src="/static/${product.name}" class="img-fluid">
+                <img src="https://static.andrebezerra.com/${product.name}" class="img-fluid">
               </a>
               <div id="chat${product.id}" class="modal fade">
                 <div class="modal-dialog modal-lg" role="content">
                   <div class="modal-content">
                     <span data-bs-dismiss="modal" class="close text-right">×</span>
-                    <img class="imgZoom align-self-center" src="/static/${product.name}">
+                    <img class="imgZoom align-self-center" src="https://static.andrebezerra.com/${product.name}">
                   </div>
                 </div>
               </div>

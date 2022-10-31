@@ -11,7 +11,7 @@ function loginSubmit(e) {
     dataType: "json",
     contentType: "Application/json",
     success: function (data) {
-      localStorage.setItem("User", JSON.stringify(data));
+      localStorage.setItem("User", JSON.stringify(data.user));
       window.location.replace('/infiniteGallery.html');
     },
     error: function (request) {
