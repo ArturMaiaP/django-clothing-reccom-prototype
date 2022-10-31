@@ -33,9 +33,9 @@ export default function TabMenu() {
     setValue(newValue);
   };
   const data = [
-    { name: "img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000001.jpg" },
-    { name: "img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000002.jpg" },
-    { name: "img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000003.jpg" },
+    { name: "Abstract_Brushstroke_Print_Pencil_Skirt/img_00000001.jpg" },
+    { name: "Abstract_Brushstroke_Print_Pencil_Skirt/img_00000002.jpg" },
+    { name: "Abstract_Brushstroke_Print_Pencil_Skirt/img_00000003.jpg" },
   ];
   return (
     <>

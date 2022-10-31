@@ -15,6 +15,7 @@ import {
   useTransform,
 } from "framer-motion";
 import React, { useEffect } from "react";
+import config from "../config";
 
 
 export default function HomePage() {
@@ -58,7 +59,7 @@ export default function HomePage() {
           rotate,
           opacity,
           backgroundImage:
-            "url('/static/img/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000001.jpg')",
+            `url('${config.staticUrl}/Abstract_Brushstroke_Print_Pencil_Skirt/img_00000001.jpg')`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "contain",
           width: 450,

@@ -1,11 +1,12 @@
 import { Delete } from "@mui/icons-material";
 import { Fab, ImageListItem, ImageListItemBar } from "@mui/material";
 import React from "react";
+import config from "../config";
 
 export default function LikedPhoto(props: { item: any }) {
   return (
     <ImageListItem>
-      <img src={`/static/${props.item.name}`} alt="Skirt" loading="lazy" />
+      <img src={`${config.staticUrl}/${props.item.name}`} alt="Skirt" loading="lazy" />
       <ImageListItemBar
         sx={{ background: "transparent" }}
         actionIcon={
