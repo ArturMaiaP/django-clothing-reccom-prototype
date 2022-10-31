@@ -20,7 +20,6 @@ chatbotInstance = Chatbot()
 bcrypt = Bcrypt()
 select_images = SelectImages()
 cors = CORS()
-app.config['CORS_HEADERS'] = 'Content-Type'
 
 def login_required(f):
     def decorated(*args, **kwargs):
