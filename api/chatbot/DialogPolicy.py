@@ -37,7 +37,7 @@ class DialogPolicy:
             ["size", "format", "fabric", "pattern"]
         ]
         
-    def response(self, i, elapsed):
+    def response(self, i, elapsed, state):
         responses = []
         shouldRecommend = False
 
@@ -48,8 +48,19 @@ class DialogPolicy:
         
         if elapsed >= 30 or shouldRecommend:
             responses.append({"action": "recommend", "text": self.recommend_text()})
+            ask_response = self.ask_entity(state)
+            if ask_response:
+                responses.append(ask_response)
         
         return responses
+    
+    def ask_entity(self, state):
+        entities = [s for s in state['slots'] if not state['slots'][s]]
+        if len(entities):
+            entity = random.choice(entities)
+            text = random.choice(["What is your preference about {}?", "What do you think about the skirt {}?"])
+            return {"action": "answer", "text": text.format(entity)}
+        return None
     
     def recommend_text(self):
         return random.choice(["Perhaps you'd like one of these?", "What do you think about one of these?"])
@@ -72,4 +83,4 @@ class DialogPolicy:
         
         self.process_slots(state, intent_index, entities)
         
-        return self.response(intent_index, elapsed)
+        return self.response(intent_index, elapsed, state)
