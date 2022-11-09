@@ -11,6 +11,7 @@ function chat(e) {
   if (!message.trim()) {
     return;
   }
+  $("#message").val("");
   insertChat(true, message);
   var formData = {
     id: chatId,
@@ -35,7 +36,6 @@ function chat(e) {
             break;
         }
       }
-      $("#message").val("");
     },
     error: function (request) {
       if (request.status == 401) {
