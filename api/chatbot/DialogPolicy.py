@@ -64,7 +64,12 @@ class DialogPolicy:
                     max_entropy = state['entropy'][e]
                     entity = e
             if entity:
-                text = random.choice(["What is your preference about {}?", "What do you think about the skirt {}?"])
+                text = random.choice([
+                    "What is your preference about {}?", 
+                    "What do you think about the skirt {}?",
+                    "Do you have any preference about {}?",
+                    "What {} do you like?"
+                    ])
                 return {"action": "answer", "text": text.format(entity)}
         return None
     
