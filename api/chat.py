@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 import json
 
-from . import login_required, chatbotInstance
+from . import login_required, chatbotInstance, select_images
 from .models import db, Chat
 from .chatbot import Chatbot
 
@@ -16,6 +16,7 @@ def chat(user):
     session = Chat.query.filter_by(id=id, user_id=user.id).first()
     if session:
         state = json.loads(session.session)
+        state['entropy'] = select_images.entropy(state['slots'])
         actions = chatbotInstance.turn(state, text)
         session.session = json.dumps(state)
         db.session.add(session)

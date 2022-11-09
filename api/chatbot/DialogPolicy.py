@@ -57,9 +57,15 @@ class DialogPolicy:
     def ask_entity(self, state):
         entities = [s for s in state['slots'] if not state['slots'][s]]
         if len(entities):
-            entity = random.choice(entities)
-            text = random.choice(["What is your preference about {}?", "What do you think about the skirt {}?"])
-            return {"action": "answer", "text": text.format(entity)}
+            max_entropy = 0
+            entity = None
+            for e in entities:
+                if state['entropy'][e] > max_entropy:
+                    max_entropy = state['entropy'][e]
+                    entity = e
+            if entity:
+                text = random.choice(["What is your preference about {}?", "What do you think about the skirt {}?"])
+                return {"action": "answer", "text": text.format(entity)}
         return None
     
     def recommend_text(self):
