@@ -34,7 +34,7 @@ class EntropyCalculator:
     def entropy(self, df):       
         l = {}
         for label, ent in self.entities:
-            df_filtered = df[[e[0] for e in ent]]
+            df_filtered = df[[entity[0] for entity in ent]]
             n = len(df_filtered)
             probs = []
             for key, pattern in ent:
