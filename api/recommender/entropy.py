@@ -1,4 +1,5 @@
 from math import e, log
+import numpy as np
 
 class EntropyCalculator:
     def __init__(self) -> None:
@@ -36,9 +37,17 @@ class EntropyCalculator:
         for label, ent in self.entities:
             df_filtered = df[[entity[0] for entity in ent]]
             n = len(df_filtered)
+            if n <= 1:
+                l[label] = 0.
+                continue
             probs = []
             for key, pattern in ent:
                 probs.append(len(df_filtered[df_filtered[key] == 1]) / n)
+                
+            if np.count_nonzero(probs) <= 1:
+                l[label] = 0.
+                continue
+            
             ent = 0.
             for i in probs:
                 ent -= i * log(i, e)
