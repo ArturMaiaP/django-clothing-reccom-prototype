@@ -1,6 +1,5 @@
 from math import e, log
 import numpy as np
-
 class EntropyCalculator:
     def __init__(self) -> None:
         #self.nlp = spacy.load('en_core_web_sm')
@@ -35,14 +34,13 @@ class EntropyCalculator:
     def entropy(self, df):       
         l = {}
         for label, ent in self.entities:
-            df_filtered = df[[entity[0] for entity in ent]]
-            n = len(df_filtered)
+            n = len(df)
             if n <= 1:
                 l[label] = 0.
                 continue
             probs = []
             for key, pattern in ent:
-                probs.append(len(df_filtered[df_filtered[key] == 1]) / n)
+                probs.append(len(df[df[key] == 1]) / n)
                 
             if np.count_nonzero(probs) <= 1:
                 l[label] = 0.
@@ -50,7 +48,8 @@ class EntropyCalculator:
             
             ent = 0.
             for i in probs:
-                ent -= i * log(i, e)
+                if i > 0:
+                    ent -= i * log(i, e)
             l[label] = ent
         return l
                     
