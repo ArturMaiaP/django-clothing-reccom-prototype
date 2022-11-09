@@ -1,7 +1,4 @@
-import spacy
 import re
-from spacy import displacy
-from collections import Counter
 
 class EntityExtractor:
     def __init__(self) -> None:
