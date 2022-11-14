@@ -294,7 +294,12 @@ fieldset:disabled a.btn {
 }
 
 #infiniteDiv{
-    padding: 20px 0px 120px 0px;
+    padding: 20px 0px 20px 0px;
+}
+
+#infiniteDivEnd{
+    text-align: center;
+    padding-bottom: 2rem;
 }
 
 .chat {
