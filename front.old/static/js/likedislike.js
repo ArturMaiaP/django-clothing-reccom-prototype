@@ -1,67 +1,67 @@
 var counter = 0;
 var group = 0;
 function getRecommendation(target, fromChat = false) {
-  if(group == 15){
+  if(group >= 15){
     $('#infiniteDivEnd').html("You reached the end. Please, choose a final skirt.");
-    return;
-  }
-  $.ajax({
-    method: "GET",
-    url: API_URL + "/recommend" + (chatId ? "?id=" + chatId : ""),
-    headers: {
-      Authorization: "Bearer " + user.token,
-    },
-    success: function (data) {
-      group++;
-      var html = `<div class="row group" id="group-${group}">`;
-      for (const i of data.img_list) {
-        counter++;
-        html += `
-            <div class="d-flex col-sm-3 column-padding">
-              <div class="card col-12">
-                <div class="card-body">
-                  <div class="row">
-                    <a class="d-flex justify-content-center imgIn" data-bs-toggle="modal" data-bs-target="#modal${counter}">
-                      <img class="img-fluid align-middle " src= "https://static.andrebezerra.com/${i}">
-                    </a>
-                    <div id="modal${counter}" class="modal fade">
-                      <div class="modal-dialog modal-lg" role="content">
-                        <div class="modal-content">
-                          <span data-bs-dismiss="modal" class="close text-right">&times;</span>
-                          <img class="imgZoom align-self-center" src="https://static.andrebezerra.com/${i}" >
+  } else {
+    $.ajax({
+      method: "GET",
+      url: API_URL + "/recommend" + (chatId ? "?id=" + chatId : ""),
+      headers: {
+        Authorization: "Bearer " + user.token,
+      },
+      success: function (data) {
+        group++;
+        var html = `<div class="row group" id="group-${group}">`;
+        for (const i of data.img_list) {
+          counter++;
+          html += `
+              <div class="d-flex col-sm-3 column-padding">
+                <div class="card col-12">
+                  <div class="card-body">
+                    <div class="row">
+                      <a class="d-flex justify-content-center imgIn" data-bs-toggle="modal" data-bs-target="#modal${counter}">
+                        <img class="img-fluid align-middle " src= "https://static.andrebezerra.com/${i}">
+                      </a>
+                      <div id="modal${counter}" class="modal fade">
+                        <div class="modal-dialog modal-lg" role="content">
+                          <div class="modal-content">
+                            <span data-bs-dismiss="modal" class="close text-right">&times;</span>
+                            <img class="imgZoom align-self-center" src="https://static.andrebezerra.com/${i}" >
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="btn-group">
-                      <input type="radio" class="btn-check" name="btn${counter}" id="like${counter}" autocomplete="off">
-                      <label class="btn btn-success" for="like${counter}" onclick="like('${i}');"><span class="fa fa-thumbs-up"></span></label>
-                      <input type="radio" class="btn-check" name="btn${counter}" id="finish${counter}" autocomplete="off">
-                      <label class="btn btn-success" for="finish${counter}" onclick="finish('${i}');"><span class="fa fa-magnifying-glass"></span></label>
-                      <input type="radio" class="btn-check" name="btn${counter}" id="dislike${counter}" autocomplete="off">
-                      <label class="btn btn-danger" for="dislike${counter}" onclick="dislike('${i}');"><span class="fa fa-thumbs-down"></span></label>
+                    <div class="row">
+                      <div class="btn-group">
+                        <input type="radio" class="btn-check" name="btn${counter}" id="like${counter}" autocomplete="off">
+                        <label class="btn btn-success" for="like${counter}" onclick="like('${i}');"><span class="fa fa-thumbs-up"></span></label>
+                        <input type="radio" class="btn-check" name="btn${counter}" id="finish${counter}" autocomplete="off">
+                        <label class="btn btn-success" for="finish${counter}" onclick="finish('${i}');"><span class="fa fa-magnifying-glass"></span></label>
+                        <input type="radio" class="btn-check" name="btn${counter}" id="dislike${counter}" autocomplete="off">
+                        <label class="btn btn-danger" for="dislike${counter}" onclick="dislike('${i}');"><span class="fa fa-thumbs-down"></span></label>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>`;
-      }
-      html += "</div>";
-      $(target).append(html);
-      if (fromChat) {
-        $(".group.active").removeClass("active");
-        $(`#group-${group}`).get(0).scrollIntoView();
-        $(`#group-${group}`).addClass("active");
-      }
-    },
-    error: function (request) {
-      if (request.status == 401) {
-        localStorage.removeItem("User");
-        window.location.replace("/login.html");
-      }
-    },
-  });
+              </div>`;
+        }
+        html += "</div>";
+        $(target).append(html);
+        if (fromChat) {
+          $(".group.active").removeClass("active");
+          $(`#group-${group}`).get(0).scrollIntoView();
+          $(`#group-${group}`).addClass("active");
+        }
+      },
+      error: function (request) {
+        if (request.status == 401) {
+          localStorage.removeItem("User");
+          window.location.replace("/login.html");
+        }
+      },
+    });
+  }
 }
 
 function preference(type, name) {
