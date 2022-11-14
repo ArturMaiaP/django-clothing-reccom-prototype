@@ -107,8 +107,6 @@
           ) < 1
         ) {
           getRecommendation("#infiniteDiv");
-        } else if ($(window).scrollTop() == 0 && ($(document).height() - $(window).height()) == 0){
-          getRecommendation("#infiniteDiv");
         }
         $('#chat-card').css({
           "top": ($(window).scrollTop())+"px"
@@ -116,6 +114,9 @@
       });
       $(window).ready(function () {
         getRecommendation("#infiniteDiv");
+        if ($(window).scrollTop() == 0 && ($(document).height() - $(window).height()) == 0){
+          getRecommendation("#infiniteDiv");
+        }
         setTimeout(() => {
           insertChat(false, "Hello, how can I help you?");
         },2000);
