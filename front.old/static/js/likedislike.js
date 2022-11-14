@@ -34,6 +34,8 @@ function getRecommendation(target, fromChat = false) {
                     <div class="btn-group">
                       <input type="radio" class="btn-check" name="btn${counter}" id="like${counter}" autocomplete="off">
                       <label class="btn btn-success" for="like${counter}" onclick="like('${i}');"><span class="fa fa-thumbs-up"></span></label>
+                      <input type="radio" class="btn-check" name="btn${counter}" id="finish${counter}" autocomplete="off">
+                      <label class="btn btn-success" for="finish${counter}" onclick="finish('${i}');"><span class="fa fa-magnifying-glass"></span></label>
                       <input type="radio" class="btn-check" name="btn${counter}" id="dislike${counter}" autocomplete="off">
                       <label class="btn btn-danger" for="dislike${counter}" onclick="dislike('${i}');"><span class="fa fa-thumbs-down"></span></label>
                     </div>
@@ -81,6 +83,27 @@ function preference(type, name) {
   });
 }
 
+function finish(name) {
+  var formData = {
+    product: name,
+  };
+  $.ajax({
+    method: "POST",
+    url: API_URL + "/finish",
+    headers: {
+      Authorization: "Bearer " + user.token,
+    },
+    data: JSON.stringify(formData),
+    dataType: "json",
+    contentType: "Application/json",
+    success: function (data) {
+      window.location.replace("/thanks.html");
+    },
+    error: function (request) {
+      alert(request.responseText);
+    },
+  });
+}
 function like(name) {
   return preference("/like", name);
 }
