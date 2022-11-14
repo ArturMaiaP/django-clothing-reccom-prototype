@@ -107,6 +107,8 @@
           ) < 1
         ) {
           getRecommendation("#infiniteDiv");
+        } else if ($(window).scrollTop() == 0 && ($(document).height() - $(window).height()) == 0){
+          getRecommendation("#infiniteDiv");
         }
         $('#chat-card').css({
           "top": ($(window).scrollTop())+"px"
