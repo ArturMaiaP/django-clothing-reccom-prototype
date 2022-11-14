@@ -2,6 +2,9 @@ var counter = 0;
 var group = 0;
 function getRecommendation(target, fromChat = false) {
   console.log(user);
+  if(group == 15){
+    $('#infiniteDivEnd').html("You reached the end. Please, choose a final skirt.")
+  }
   $.ajax({
     method: "GET",
     url: API_URL + "/recommend" + (chatId ? "?id=" + chatId : ""),
