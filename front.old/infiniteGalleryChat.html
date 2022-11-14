@@ -20,6 +20,7 @@
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/config.js"></script>
     <script src="/static/js/likedislike.js"></script>
+    <script src="/static/js/chat.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
       rel="stylesheet"
@@ -38,10 +39,15 @@
     <title>Images Gallery</title>
     <script>
       var user = localStorage.getItem("User");
+      var chatId = sessionStorage.getItem("Chat");
       if (!user) {
         window.location.replace("/login.html");
       } else {
         user = JSON.parse(user);
+      }
+
+      if (!chatId) {
+        chatInit();
       }
     </script>
   </head>
@@ -66,10 +72,28 @@
         </div>
         -->
         <div class="row">
-          <div class="col-12">
+          <div class="col-8">
             <div class="row row-content" id="infiniteDiv"></div>
             <div id="infiniteDivEnd"></div>
           </div>
+          <div class="col-4 p-5">
+              <div id="chat-card" class="card text-bg-light border chat">
+                <div class="card-header">
+                  <h2 class="m-0">Chat</h2>
+                </div>
+                <div id="chat-target" class="card-body"  style="height: 50vh"></div>
+                <div class="card-footer">
+                  <form onsubmit="chat(event);">
+                    <div class="input-group">
+                      <input id="message" type="text" class="form-control" />
+                      <button class="btn btn-primary" type="submit">
+                        <span class="fas fa-plane"></span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
         </div>
     </div>
 
@@ -84,12 +108,19 @@
         ) {
           getRecommendation("#infiniteDiv");
         }
+        $('#chat-card').css({
+          "top": ($(window).scrollTop())+"px"
+        })
       });
       $(window).ready(function () {
         getRecommendation("#infiniteDiv");
         if ($(window).scrollTop() == 0 && ($(document).height() - $(window).height()) == 0){
           getRecommendation("#infiniteDiv");
-        } 
+        }
+        setTimeout(() => {
+          insertChat(false, "Hello, how can I help you?");
+        },2000);
+        
       });
     </script>
   </body>
