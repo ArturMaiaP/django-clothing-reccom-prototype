@@ -38,6 +38,7 @@
     <title>Images Gallery</title>
     <script>
       var user = localStorage.getItem("User");
+      var chatId = null;
       if (!user) {
         window.location.replace("/login.html");
       } else {
