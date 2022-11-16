@@ -60,7 +60,7 @@ class DialogPolicy:
             max_entropy = 0
             entity = None
             for e in entities:
-                if state['entropy'][e] > max_entropy:
+                if not e in ["item", "with_item"] and state['entropy'][e] > max_entropy:
                     max_entropy = state['entropy'][e]
                     entity = e
             if entity:
