@@ -21,7 +21,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, password):
             token = jwt.encode({
                 "sub": user.id,
-                "exp": datetime.datetime.now() + datetime.timedelta(hours=4)
+                "exp": datetime.datetime.now() + datetime.timedelta(hours=8)
             }, os.getenv('SECRET_KEY'))
             return jsonify({"user": {
                 "token": token,
