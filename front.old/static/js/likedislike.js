@@ -37,7 +37,7 @@ function getRecommendation(target, fromChat = false) {
                         <input type="radio" class="btn-check" name="btn${counter}" id="like${counter}" autocomplete="off">
                         <label class="btn btn-success" for="like${counter}" onclick="like('${i}');"><span class="fa fa-thumbs-up"></span></label>
                         <input type="radio" class="btn-check" name="btn${counter}" id="finish${counter}" autocomplete="off">
-                        <label class="btn btn-success" for="finish${counter}" onclick="finish('${i}');"><span class="fa fa-magnifying-glass"></span></label>
+                        <label class="btn btn-success" for="finish${counter}" onclick="finish('${i}');"><span class="fa fa-cart-shopping"></span></label>
                         <input type="radio" class="btn-check" name="btn${counter}" id="dislike${counter}" autocomplete="off">
                         <label class="btn btn-danger" for="dislike${counter}" onclick="dislike('${i}');"><span class="fa fa-thumbs-down"></span></label>
                       </div>
@@ -88,10 +88,16 @@ function preference(type, name) {
     },
   });
 }
-
-function finish(name) {
+function ask_finish(name){
+  finalSkirt = name;
+  $('#finish-prompt').modal('show');
+}
+function finish() {
+  if(finalSkirt == null){
+    return false;
+  }
   var formData = {
-    product: name,
+    product: finalSkirt,
   };
   $.ajax({
     method: "POST",

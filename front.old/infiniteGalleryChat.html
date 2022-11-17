@@ -40,6 +40,7 @@
     <script>
       var user = localStorage.getItem("User");
       var chatId = sessionStorage.getItem("Chat");
+      var finalSkirt = null;
       if (!user) {
         window.location.replace("/login.html");
       } else {
@@ -96,6 +97,25 @@
             </div>
         </div>
     </div>
+    <div id="finish-prompt" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Finish</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure that you found your skirt and want to finish the experiment?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-primary">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     
 
@@ -112,16 +132,16 @@
           "top": ($(window).scrollTop())+"px"
         })
       });
-      $(window).ready(function () {
-        getRecommendation("#infiniteDiv");
-        if ($(window).scrollTop() == 0 && ($(document).height() - $(window).height()) == 0){
-          getRecommendation("#infiniteDiv");
-        }
-        setTimeout(() => {
-          insertChat(false, "Hello, how can I help you?");
-        },2000);
+      // $(window).ready(function () {
+      //   getRecommendation("#infiniteDiv");
+      //   if ($(window).scrollTop() == 0 && ($(document).height() - $(window).height()) == 0){
+      //     getRecommendation("#infiniteDiv");
+      //   }
+      //   setTimeout(() => {
+      //     insertChat(false, "Hello, how can I help you?");
+      //   },2000);
         
-      });
+      // });
     </script>
   </body>
 </html>
