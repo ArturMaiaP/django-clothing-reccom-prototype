@@ -4,6 +4,7 @@ function loginSubmit(e) {
       email: $('#email').val(),
       password: $('#password').val(),
   }
+  $('#feedback').html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');
   $.ajax({
     method: "POST",
     url: API_URL + "/login",
@@ -15,7 +16,7 @@ function loginSubmit(e) {
       window.location.replace('/infiniteGallery.html');
     },
     error: function (request) {
-      alert(request.responseText);
+      $('#feedback').html('<div class="alert alert-danger" role="alert">Invalid Email or Password.</div>');
     },
   });
 }

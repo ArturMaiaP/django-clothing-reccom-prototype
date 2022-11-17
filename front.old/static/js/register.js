@@ -5,6 +5,7 @@ function registerSubmit(e) {
         email: $('#email').val(),
         password: $('#password').val(),
     }
+    $('#feedback').html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');
     $.ajax({
       method: "POST",
       url: API_URL + "/signup",
@@ -15,7 +16,7 @@ function registerSubmit(e) {
         window.location.replace('/login.html');
       },
       error: function (request) {
-        alert(request.responseText);
+        $('#feedback').html('<div class="alert alert-danger" role="alert">Invalid values.</div>');
       },
     });
   }

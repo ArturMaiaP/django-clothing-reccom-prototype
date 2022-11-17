@@ -81,7 +81,10 @@ function preference(type, name) {
       console.log(type + " - " + name);
     },
     error: function (request) {
-      alert(request.responseText);
+      if (request.status == 401) {
+        localStorage.removeItem("User");
+        window.location.replace("/login.html");
+      }
     },
   });
 }
@@ -103,7 +106,10 @@ function finish(name) {
       window.location.replace("/thanks.html");
     },
     error: function (request) {
-      alert(request.responseText);
+      if (request.status == 401) {
+        localStorage.removeItem("User");
+        window.location.replace("/login.html");
+      }
     },
   });
 }
