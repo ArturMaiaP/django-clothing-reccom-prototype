@@ -58,7 +58,9 @@
         <div class="row align-items-center">
           <div class="col-12 text-center text-white">
             <h1>
-              Let us know your opinion. Is there any skirt below that you like?
+              Let us know your opinion. Please, let us know all that you like
+              and dislikes, and if you find one that you want to by, just click
+              in the shopping cart.
             </h1>
           </div>
         </div>
@@ -72,76 +74,93 @@
             </h4>
         </div>
         -->
-        <div class="row">
-          <div class="col-8">
-            <div class="row row-content" id="infiniteDiv"></div>
-            <div id="infiniteDivEnd"></div>
+      <div class="row">
+        <div class="col-8">
+          <div class="row row-content" id="infiniteDiv"></div>
+          <div id="infiniteDivEnd">
+            <button onclick="recommend()" class="btn btn-primary">More Skirts</button>
           </div>
-          <div class="col-4 p-5">
-              <div id="chat-card" class="card text-bg-light border chat">
-                <div class="card-header">
-                  <h2 class="m-0">Chat</h2>
-                </div>
-                <div id="chat-target" class="card-body"  style="height: 50vh"></div>
-                <div class="card-footer">
-                  <form onsubmit="chat(event);">
-                    <div class="input-group">
-                      <input id="message" type="text" class="form-control" />
-                      <button class="btn btn-primary" type="submit">
-                        <span class="fas fa-plane"></span>
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
         </div>
+        <div class="col-4 p-5">
+          <div id="chat-card" class="card text-bg-light border chat">
+            <div class="card-header">
+              <h2 class="m-0">Chat</h2>
+            </div>
+            <div id="chat-target" class="card-body" style="height: 50vh"></div>
+            <div class="card-footer">
+              <form onsubmit="chat(event);">
+                <div class="input-group">
+                  <input id="message" type="text" class="form-control" />
+                  <button class="btn btn-primary" type="submit">
+                    <span class="fas fa-plane"></span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="finish-prompt" class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Finish</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <p>Are you sure that you found your skirt and want to finish the experiment?</p>
+            <p>
+              Are you sure that you found your skirt and want to finish the
+              experiment?
+            </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            <button type="button" class="btn btn-primary">Yes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              No
+            </button>
+            <button onclick="finish()" type="button" class="btn btn-primary">Yes</button>
           </div>
         </div>
       </div>
     </div>
 
-    
-
     <script>
+      function recommend(){
+        getRecommendation("#infiniteDiv");
+      }
       $(window).scroll(function () {
         if (
           Math.abs(
             $(window).scrollTop() - ($(document).height() - $(window).height())
           ) < 1
         ) {
-          getRecommendation("#infiniteDiv");
+          // recommend();
+          $("#chat-card").css({
+            top: $(window).scrollTop() + "px",
+          });
         }
-        $('#chat-card').css({
-          "top": ($(window).scrollTop())+"px"
-        })
       });
-      // $(window).ready(function () {
-      //   getRecommendation("#infiniteDiv");
-      //   if ($(window).scrollTop() == 0 && ($(document).height() - $(window).height()) == 0){
-      //     getRecommendation("#infiniteDiv");
-      //   }
-      //   setTimeout(() => {
-      //     insertChat(false, "Hello, how can I help you?");
-      //   },2000);
-        
-      // });
+      $(window).ready(function () {
+        // recommend();
+        // if ($(window).scrollTop() == 0 && ($(document).height() - $(window).height()) == 0){
+        //   recommend();
+        // }
+        setTimeout(() => {
+          insertChat(false, "Hello, how can I help you?");
+        },2000);
+
+      });
     </script>
   </body>
 </html>
