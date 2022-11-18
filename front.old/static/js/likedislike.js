@@ -23,7 +23,7 @@ function getRecommendation(target, fromChat = false) {
                       <a class="d-flex justify-content-center imgIn" data-bs-toggle="modal" data-bs-target="#modal${counter}">
                         <img class="img-fluid align-middle " src= "https://static.andrebezerra.com/${i}">
                       </a>
-                      <div id="modal${counter}" class="modal fade">
+                      <div id="modal${counter}" class="modal zoom fade">
                         <div class="modal-dialog modal-lg" role="content">
                           <div class="modal-content">
                             <span data-bs-dismiss="modal" class="close text-right">&times;</span>

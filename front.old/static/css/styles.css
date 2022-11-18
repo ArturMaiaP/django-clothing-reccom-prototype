@@ -160,18 +160,17 @@ header.masthead h1 {
 	max-height: 100%;
 }
 
-.modal{
+.zoom{
 	padding-top: 50px;
 }
-.modal-content{
+.zoom .modal-content{
 	margin: auto;
 	background: none;
 	border: none;
 }
 
-.imgZoom{
+.zomm img{
 	min-width: 100%;
-
 }
 
 .close {
