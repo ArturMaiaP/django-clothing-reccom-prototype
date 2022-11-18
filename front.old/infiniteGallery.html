@@ -73,7 +73,9 @@
         <div class="col-12">
           <div class="row row-content" id="infiniteDiv"></div>
           <div id="infiniteDivEnd">
-            <button onclick="recommend()" class="btn btn-primary">More Skirts Recommendations</button>
+            <button onclick="recommend()" class="btn btn-primary">
+              More Skirts Recommendations
+            </button>
           </div>
         </div>
       </div>
@@ -106,14 +108,26 @@
             >
               No
             </button>
-            <button onclick="finish('/thanks.html')" type="button" class="btn btn-primary">Yes</button>
+            <button
+              onclick="finish('/thanks.html')"
+              type="button"
+              class="btn btn-primary"
+            >
+              Yes
+            </button>
           </div>
         </div>
       </div>
     </div>
-
+    <div class="fab-container">
+      <div class="sub-button shadow">
+        <a href="/instructions.html" target="_blank">
+          <span class="fa fa-question text-white"></span>
+        </a>
+      </div>
+    </div>
     <script>
-      function recommend(){
+      function recommend() {
         getRecommendation("#infiniteDiv");
       }
       // $(window).scroll(function () {
