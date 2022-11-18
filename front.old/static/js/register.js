@@ -5,7 +5,7 @@ function registerSubmit(e) {
         email: $('#email').val(),
         password: $('#password').val(),
     }
-    $('#feedback').html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');
+    $('#feedback').html('<div class="spinner-border" role="status">/div>');
     $.ajax({
       method: "POST",
       url: API_URL + "/signup",
