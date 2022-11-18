@@ -37,7 +37,7 @@ function getRecommendation(target, fromChat = false) {
                         <input type="radio" class="btn-check" name="btn${counter}" id="like${counter}" autocomplete="off">
                         <label class="btn btn-success" for="like${counter}" onclick="like('${i}');"><span class="fa fa-thumbs-up"></span></label>
                         <input type="radio" class="btn-check" name="btn${counter}" id="finish${counter}" autocomplete="off">
-                        <label class="btn btn-success" for="ask_finish${counter}" onclick="finish('${i}');"><span class="fa fa-cart-shopping"></span></label>
+                        <label class="btn btn-success" for="ask_finish${counter}" onclick="ask_finish('${i}');"><span class="fa fa-cart-shopping"></span></label>
                         <input type="radio" class="btn-check" name="btn${counter}" id="dislike${counter}" autocomplete="off">
                         <label class="btn btn-danger" for="dislike${counter}" onclick="dislike('${i}');"><span class="fa fa-thumbs-down"></span></label>
                       </div>
@@ -92,7 +92,7 @@ function ask_finish(name){
   finalSkirt = name;
   $('#finish-prompt').modal('show');
 }
-function finish() {
+function finish(path) {
   if(finalSkirt == null){
     return false;
   }
@@ -109,7 +109,7 @@ function finish() {
     dataType: "json",
     contentType: "Application/json",
     success: function (data) {
-      window.location.replace("/thanks.html");
+      window.location.replace(path);
     },
     error: function (request) {
       if (request.status == 401) {
