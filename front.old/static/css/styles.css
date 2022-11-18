@@ -173,7 +173,7 @@ header.masthead h1 {
 	min-width: 100%;
 }
 
-.close {
+.zoom .close {
 	top: 10px;
 	right: 35px;
 	color: #f1f1f1;
