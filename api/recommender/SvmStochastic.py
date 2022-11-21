@@ -33,21 +33,11 @@ def run_svm(df_teste, df_treino):
 
 
 def select_img_svm_inverse_transf(df_classified, qtd_img):
-
-    q25 = np.percentile(df_classified['Class'], 25)
-    q75 = np.percentile(df_classified['Class'], 75)
+    df_classified['cuts'] = pd.qcut(df_classified['Class'], q=4, labels=['lower', 'mid-low', 'mid-high', 'upper'])
     
-    positive_row_index = df_classified.loc[df_classified['Class'] > q75].index
-    df_positive = df_classified.loc[positive_row_index, :]
-    df_positive = calcular_prob_nao_zero(df_positive)
-
-    negative_row_index = df_classified.loc[df_classified['Class'] < q25].index
-    df_negative = df_classified.loc[negative_row_index, :]
-    df_negative = calcular_prob_nao_zero(df_negative)
-
-    zero_row_index = df_classified.loc[(df_classified['Class'] <= q75) & (df_classified['Class'] >= q25)].index
-    df_zero = df_classified.loc[zero_row_index, :]
-    df_zero = calcular_prob_proximo_zero(df_zero)
+    df_positive = calcular_prob_nao_zero(df_classified.loc[df_classified['cuts'] == 'upper'])
+    df_negative = calcular_prob_nao_zero(df_classified.loc[df_classified['cuts'] == 'lower'])
+    df_zero = calcular_prob_proximo_zero(df_classified.loc[df_classified['cuts'] == 'mid-low' or df_classified['cuts'] == 'mid-high'])
 
     list_positivas = select_img_prob_quadtree(df_positive, int(qtd_img/CLASSES_SVM), LIMITE_RANDOM_INICIAL)
     list_negativas = select_img_prob_quadtree(df_negative, int(qtd_img/CLASSES_SVM), LIMITE_RANDOM_INICIAL)
