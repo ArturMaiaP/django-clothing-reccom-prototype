@@ -35,9 +35,9 @@ def run_svm(df_teste, df_treino):
 def select_img_svm_inverse_transf(df_classified, qtd_img):
     df_classified['cuts'] = pd.qcut(df_classified['Class'], q=4, labels=['lower', 'mid-low', 'mid-high', 'upper'])
     
-    df_positive = calcular_prob_nao_zero(df_classified.loc[df_classified['cuts'] == 'upper'])
-    df_negative = calcular_prob_nao_zero(df_classified.loc[df_classified['cuts'] == 'lower'])
-    df_zero = calcular_prob_proximo_zero(df_classified.loc[df_classified['cuts'] == 'mid-low' or df_classified['cuts'] == 'mid-high'])
+    df_positive = calcular_prob_nao_zero(df_classified[df_classified['cuts'] == 'upper'])
+    df_negative = calcular_prob_nao_zero(df_classified[df_classified['cuts'] == 'lower'])
+    df_zero = calcular_prob_proximo_zero(df_classified[df_classified['cuts'] == 'mid-low' or df_classified['cuts'] == 'mid-high'])
 
     list_positivas = select_img_prob_quadtree(df_positive, int(qtd_img/CLASSES_SVM), LIMITE_RANDOM_INICIAL)
     list_negativas = select_img_prob_quadtree(df_negative, int(qtd_img/CLASSES_SVM), LIMITE_RANDOM_INICIAL)
