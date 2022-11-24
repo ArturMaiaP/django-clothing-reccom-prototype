@@ -4,6 +4,7 @@ function getRecommendation(target, fromChat = false) {
   if(group >= 15){
     $('#infiniteDivEnd').html("You reached the end. Please, choose a final skirt.");
   } else {
+    $('#feedback').html('<div class="spinner-border" role="status"></div>');
     $.ajax({
       method: "GET",
       url: API_URL + "/recommend" + (chatId ? "?id=" + chatId : ""),
@@ -11,6 +12,7 @@ function getRecommendation(target, fromChat = false) {
         Authorization: "Bearer " + user.token,
       },
       success: function (data) {
+        $('#feedback').html('');
         group++;
         var html = `<div class="row group" id="group-${group}">`;
         for (const i of data.img_list) {
