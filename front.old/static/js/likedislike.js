@@ -34,14 +34,20 @@ function getRecommendation(target, fromChat = false) {
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="btn-group">
-                        <input type="radio" class="btn-check" name="btn${counter}" id="like${counter}" autocomplete="off">
-                        <label class="btn btn-success" for="like${counter}" onclick="like('${i}');"><span class="fa fa-thumbs-up"></span></label>
-                        <input type="radio" class="btn-check" name="btn${counter}" id="finish${counter}" autocomplete="off">
-                        <label class="btn btn-success" for="finish${counter}" onclick="ask_finish('${i}', '#finish${counter}');"><span class="fa fa-cart-shopping"></span></label>
-                        <input type="radio" class="btn-check" name="btn${counter}" id="dislike${counter}" autocomplete="off">
-                        <label class="btn btn-danger" for="dislike${counter}" onclick="dislike('${i}');"><span class="fa fa-thumbs-down"></span></label>
+                    <div class="row justify-content-between">
+                      <div class="col-4">
+                        <div class="btn-group">
+                          <input type="radio" class="btn-check" name="btn${counter}" id="like${counter}" autocomplete="off">
+                          <label class="btn btn-success" for="like${counter}" onclick="like('${i}');"><span class="fa fa-thumbs-up"></span></label>
+                          <input type="radio" class="btn-check" name="btn${counter}" id="dislike${counter}" autocomplete="off">
+                          <label class="btn btn-danger" for="dislike${counter}" onclick="dislike('${i}');"><span class="fa fa-thumbs-down"></span></label>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="btn-group col-4">
+                          <input type="radio" class="btn-check" name="btn${counter}" id="finish${counter}" autocomplete="off">
+                          <label class="btn btn-primary" for="finish${counter}" onclick="ask_finish('${i}', '#finish${counter}');"><span class="fa fa-cart-shopping"></span></label>
+                        </div>
                       </div>
                     </div>
                   </div>
