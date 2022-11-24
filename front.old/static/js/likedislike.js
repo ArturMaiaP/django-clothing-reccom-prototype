@@ -37,7 +37,7 @@ function getRecommendation(target, fromChat = false) {
                         <input type="radio" class="btn-check" name="btn${counter}" id="like${counter}" autocomplete="off">
                         <label class="btn btn-success" for="like${counter}" onclick="like('${i}');"><span class="fa fa-thumbs-up"></span></label>
                         <input type="radio" class="btn-check" name="btn${counter}" id="finish${counter}" autocomplete="off">
-                        <label class="btn btn-success" for="finish${counter}" onclick="ask_finish('${i}');"><span class="fa fa-cart-shopping"></span></label>
+                        <label class="btn btn-success" for="finish${counter}" onclick="ask_finish('${i}', '#finish${counter}');"><span class="fa fa-cart-shopping"></span></label>
                         <input type="radio" class="btn-check" name="btn${counter}" id="dislike${counter}" autocomplete="off">
                         <label class="btn btn-danger" for="dislike${counter}" onclick="dislike('${i}');"><span class="fa fa-thumbs-down"></span></label>
                       </div>
@@ -88,8 +88,9 @@ function preference(type, name) {
     },
   });
 }
-function ask_finish(name){
+function ask_finish(name, id){
   finalSkirt = name;
+  finalSkirtId = id;
   $('#finish-prompt').modal('show');
 }
 function finish(path) {
@@ -118,6 +119,12 @@ function finish(path) {
       }
     },
   });
+}
+function closeModal(){
+  if(finalSkirtId != null){
+    $(finalSkirtId).prop('checked', false);
+  }
+  $('#finish-prompt').modal('hide');
 }
 function like(name) {
   return preference("/like", name);
