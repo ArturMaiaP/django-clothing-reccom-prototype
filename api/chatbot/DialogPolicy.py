@@ -41,7 +41,7 @@ class DialogPolicy:
         responses = []
         shouldRecommend = False
 
-        if i in [1]:
+        if i in []:
             responses.append({"action": "answer", "text": random.choice(self.answers[i])})
         else:
             shouldRecommend = True
