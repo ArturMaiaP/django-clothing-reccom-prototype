@@ -1,12 +1,13 @@
 from flask import Blueprint, request, jsonify
 
-from .models.user import User
+from .models.user import User, Logs
 
 from .models import db
 from . import bcrypt
 import datetime
 import jwt
 import os
+import json
 import uuid
 
 auth = Blueprint('auth', __name__)
@@ -22,6 +23,12 @@ def login():
             "sub": user.id,
             "exp": datetime.datetime.now() + datetime.timedelta(hours=8)
         }, os.getenv('SECRET_KEY'))
+        
+        logs = Logs()
+        logs.description = json.dumps({"action": '/signup', "user": user})
+        db.session.add(logs)
+        db.session.commit()
+        
         return jsonify({"user": {
             "token": token,
             "uid": user.uid
@@ -44,6 +51,12 @@ def signup():
             "sub": user.id,
             "exp": datetime.datetime.now() + datetime.timedelta(hours=8)
         }, os.getenv('SECRET_KEY'))
+        
+        logs = Logs()
+        logs.description = json.dumps({"action": '/signup', "user": user})
+        db.session.add(logs)
+        db.session.commit()
+        
         return jsonify({"user": {
             "token": token,
             "uid": user.uid

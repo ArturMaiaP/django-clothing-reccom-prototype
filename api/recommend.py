@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 import json
 
 from . import login_required, select_images
-from .models import db, Preference, Product, Chat, Finish
+from .models import db, Preference, Product, Chat, Finish, Logs
 from .recommender.Constantes import *
 
 recommend = Blueprint('recommend', __name__)
@@ -18,6 +18,11 @@ def finish(user):
         finished.product_id = product.id
         db.session.add(finished)
         db.session.commit()
+        
+        logs = Logs()
+        logs.description = json.dumps({"action": '/finish', "user": user, "data": {"product": product.id}})
+        db.session.add(logs)
+        db.session.commit()
         return jsonify({"message": "OK"})
     return jsonify({"message": "Product invalid."}), 422
 
@@ -32,6 +37,12 @@ def like(user):
         pref.liked = True
         db.session.add(pref)
         db.session.commit()
+        
+        logs = Logs()
+        logs.description = json.dumps({"action": '/like', "user": user, "data": {"product": product.id}})
+        db.session.add(logs)
+        db.session.commit()
+        
         return jsonify({"message": "OK"})
     return jsonify({"message": "Product invalid."}), 422
 
@@ -46,6 +57,12 @@ def dislike(user):
         pref.liked = False
         db.session.add(pref)
         db.session.commit()
+        
+        logs = Logs()
+        logs.description = json.dumps({"action": '/dislike', "user": user, "data": {"product": product.id}})
+        db.session.add(logs)
+        db.session.commit()
+        
         return jsonify({"message": "OK"})
     return jsonify({"message": "Product invalid."}), 422
 
@@ -68,6 +85,11 @@ def recomm(user):
     else:
         list_img_ini = select_images.select_images_svm(liked, disliked, slots)
     
+    logs = Logs()
+    logs.description = json.dumps({"action": '/recommend', "user": user, "data": {"result": list_img_ini}})
+    db.session.add(logs)
+    db.session.commit()
+    
     return jsonify({'img_list': list_img_ini})
 
 @recommend.route('/recommend/best', methods=['GET'])
@@ -83,7 +105,12 @@ def best(user):
         if session:
             state = json.loads(session.session)
             slots = state['slots']
-            
-    jsonify({'img': select_images.select_best_svm(liked, disliked, slots)})
+    result = select_images.select_best_svm(liked, disliked, slots)
+    
+    logs = Logs()
+    logs.description = json.dumps({"action": '/recommend/best', "user": user, "data": {"result": result}})
+    db.session.add(logs)
+    db.session.commit()
+    jsonify({'img': result})
     
     
