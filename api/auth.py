@@ -7,29 +7,25 @@ from . import bcrypt
 import datetime
 import jwt
 import os
+import uuid
 
 auth = Blueprint('auth', __name__)
 
 
 @auth.route('/login', methods=['POST'])
 def login():
-    email = request.json.get('email')
-    password = request.json.get('password')
+    uid = request.json.get('uid')
 
     try:
-        user = User.query.filter_by(email=email).first()
-        if user and bcrypt.check_password_hash(user.password, password):
-            token = jwt.encode({
-                "sub": user.id,
-                "exp": datetime.datetime.now() + datetime.timedelta(hours=8)
-            }, os.getenv('SECRET_KEY'))
-            return jsonify({"user": {
-                "token": token,
-                "name": user.name,
-                "email": user.email
-            }})
-        else:
-            return jsonify({"message": "Email or password is invalid."}), 422
+        user = User.query.filter_by(uid=uid).first()
+        token = jwt.encode({
+            "sub": user.id,
+            "exp": datetime.datetime.now() + datetime.timedelta(hours=8)
+        }, os.getenv('SECRET_KEY'))
+        return jsonify({"user": {
+            "token": token,
+            "uid": user.uid
+        }})
     except Exception as e:
         print("[Error] Login")
         print(e)
@@ -38,16 +34,20 @@ def login():
 
 @auth.route('/signup', methods=['POST'])
 def signup():
-    email = request.json.get('email')
-    password = request.json.get('password')
-    name = request.json.get('name')
+    uid = str(uuid.uuid4())
 
     try:
-        user = User(name=name, email=email,
-                    password=bcrypt.generate_password_hash(password))
+        user = User(uid=uid)
         db.session.add(user)
         db.session.commit()
-        return jsonify({"message": "OK"})
+        token = jwt.encode({
+            "sub": user.id,
+            "exp": datetime.datetime.now() + datetime.timedelta(hours=8)
+        }, os.getenv('SECRET_KEY'))
+        return jsonify({"user": {
+            "token": token,
+            "uid": user.uid
+        }})
     except Exception as e:
         print("[Error] Signup")
         print(e)
