@@ -23,7 +23,7 @@ def chat(user):
         db.session.commit()
         
         logs = Logs()
-        logs.description = json.dumps({"action": '/chat', "user": user, "data": {"chat": id, "input": text, "result": actions}})
+        logs.description = json.dumps({"action": '/chat', "user": user.id, "data": {"chat": id, "input": text, "result": actions}})
         db.session.add(logs)
         db.session.commit()
         return jsonify({"actions": actions})
@@ -41,7 +41,7 @@ def chat_init(user):
     db.session.commit()
         
     logs = Logs()
-    logs.description = json.dumps({"action": '/chat/init', "user": user, "data": {"chat": chat.id}})
+    logs.description = json.dumps({"action": '/chat/init', "user": user.id, "data": {"chat": chat.id}})
     db.session.add(logs)
     db.session.commit()
     return jsonify({"id": chat.id})

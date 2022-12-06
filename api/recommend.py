@@ -20,7 +20,7 @@ def finish(user):
         db.session.commit()
         
         logs = Logs()
-        logs.description = json.dumps({"action": '/finish', "user": user, "data": {"product": product.id}})
+        logs.description = json.dumps({"action": '/finish', "user": user.id, "data": {"product": product.id}})
         db.session.add(logs)
         db.session.commit()
         return jsonify({"message": "OK"})
@@ -39,7 +39,7 @@ def like(user):
         db.session.commit()
         
         logs = Logs()
-        logs.description = json.dumps({"action": '/like', "user": user, "data": {"product": product.id}})
+        logs.description = json.dumps({"action": '/like', "user": user.id, "data": {"product": product.id}})
         db.session.add(logs)
         db.session.commit()
         
@@ -59,7 +59,7 @@ def dislike(user):
         db.session.commit()
         
         logs = Logs()
-        logs.description = json.dumps({"action": '/dislike', "user": user, "data": {"product": product.id}})
+        logs.description = json.dumps({"action": '/dislike', "user": user.id, "data": {"product": product.id}})
         db.session.add(logs)
         db.session.commit()
         
@@ -86,7 +86,7 @@ def recomm(user):
         list_img_ini = select_images.select_images_svm(liked, disliked, slots)
     
     logs = Logs()
-    logs.description = json.dumps({"action": '/recommend', "user": user, "data": {"result": list_img_ini}})
+    logs.description = json.dumps({"action": '/recommend', "user": user.id, "data": {"result": list_img_ini}})
     db.session.add(logs)
     db.session.commit()
     
@@ -108,7 +108,7 @@ def best(user):
     result = select_images.select_best_svm(liked, disliked, slots)
     
     logs = Logs()
-    logs.description = json.dumps({"action": '/recommend/best', "user": user, "data": {"result": result}})
+    logs.description = json.dumps({"action": '/recommend/best', "user": user.id, "data": {"result": result}})
     db.session.add(logs)
     db.session.commit()
     jsonify({'img': result})

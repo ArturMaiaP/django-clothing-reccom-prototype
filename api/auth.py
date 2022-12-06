@@ -25,7 +25,7 @@ def login():
         }, os.getenv('SECRET_KEY'))
         
         logs = Logs()
-        logs.description = json.dumps({"action": '/signup', "user": user})
+        logs.description = json.dumps({"action": '/signup', "user": user.id})
         db.session.add(logs)
         db.session.commit()
         
@@ -53,7 +53,7 @@ def signup():
         }, os.getenv('SECRET_KEY'))
         
         logs = Logs()
-        logs.description = json.dumps({"action": '/signup', "user": user})
+        logs.description = json.dumps({"action": '/signup', "user": user.id})
         db.session.add(logs)
         db.session.commit()
         
