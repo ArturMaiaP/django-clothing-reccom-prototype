@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 
-from .models.user import User, Logs
+from .models import User, Logs
 
 from .models import db
 from . import bcrypt
