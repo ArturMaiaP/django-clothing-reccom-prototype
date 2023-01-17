@@ -20,7 +20,7 @@ class SelectImages:
         if slots:
             for key in slots:
                 for value in slots[key]:
-                    df = df[df[value] == 1]
+                    df = df[df[key] == value]
                     
         return qt.select_img_quadtree(df, self.sample)
 
@@ -29,7 +29,7 @@ class SelectImages:
         if slots:
             for key in slots:
                 for value in slots[key]:
-                    df = df[df[value] == 1]
+                    df = df[df[key] == value]
 
         df_treino = get_df_treino(df, list_rel, list_irrel)
         
@@ -47,7 +47,7 @@ class SelectImages:
         if slots:
             for key in slots:
                 for value in slots[key]:
-                    df = df[df[value] == 1]
+                    df = df[df[key] == value]
 
         df_treino = get_df_treino(df, list_rel, list_irrel)
         
@@ -64,5 +64,5 @@ class SelectImages:
         df = self.df_teste
         for key in slots:
             for value in slots[key]:
-                df = df[df[value] == 1]
+                df = df[df[key] == value]
         return self.entropy_calculator.entropy(df)
