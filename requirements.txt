@@ -8,7 +8,7 @@ flask-bcrypt
 python-dotenv
 mysql-connector-python
 pandas
-sklearn
+sklearn==0.0
 spacy>=3.0.0,<4.0.0
 nltk
 umap-learn
