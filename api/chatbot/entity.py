@@ -5,37 +5,56 @@ class EntityExtractor:
         #self.nlp = spacy.load('en_core_web_sm')
         self.entities = [
             #Label, Patterns
-            ["pattern", [
-                ["a_line", "a[\ -]+line"],
-                ["dots", "dot(s|ted)?"],
-                ["Floral", "flo(ral|wer)"],
-                ["Printed", "print(ed)?"],
-                ["Stripes", "stripe(s|d)?"],
+            ["color", [
+               ["black", "black"],
+               ["blue", "blue"],
+               ["brown", "brown"],
+               ["beige", "beige"],
+               ["gray", "gr(a|e)y"],
+               ["green", "green"],
+               ["orange", "orange"],
+               ["pink", "pink"],
+               ["purple", "purple"],
+               ["red", "(red)"],
+               ["white", "white"],
+               ["yellow", "yellow"],
             ]],
             ["fabric", [
-                ["denim", "denim"],
-                ["faux", "faux(?! leather)"],
-                ["faux_leather", "faux[\ -]+leather"],
-                ["knit", "knit(ted)?"],
-                ["Lacy", "lac(e|y|ed)"],
-                ["leather", "(?<!faux )leather"],
+                ["denim", "(denim|jean(s)?)"],
+                ["knitted", "(knit(ted)?|whool)"],
+                ["laced", "(lac(e|y|ed)|jacquard)"],
+                ["glossy", "(leather|glossy)"],
+                ["velvet", "(velvet|plushy)"],
+                ["general", "(cotton|jersey|silk|satin)"],
+            ]],
+            ["pattern", [
+                ["animal_print", "animal([\ -]+print)?"],
+                ["geometric", "(geometric|argyle)"],
+                ["camouflage", "camouflage"],
+                ["checked", "(checked|plaid)"],
+                ["floral", "flo(ral|wer)"],
+                ["paisley", "paisley"],
+                ["plain", "plain"],
+                ["dots", "dot(s|ted)?"],
+                ["striped", "stripe(s|d)?"],
+                ["tie_dyed", "tie[\ -]+dye(d)?"],
             ]],
             ["size", [
-                ["maxi", "(long(er)?)"],
-                ["midi", "(mid)"],
-                ["mini", "(mini)"],
+                ["maxi", "(max(i)?|long(er)?)"],
+                ["midi", "(mid(i)?)"],
+                ["mini", "(mini|short)"],
             ]],
-            ["format", [
-                ["pencil", "pencil"],
-                ["Pleated", "pleat(ed)?"],
-                ["skater", "skater"],
+            ["type", [
+                ["straight", "(pencil|straight|bubble|tulip)"],
+                ["pleated", "((pleat(s|es|ed)?)|a[\ -]+line|yoke|panel|tiered|gathered|godet)"],
+                ["skewed", "(skewed|wrap|hankerchief|sarong|assymetric)"],
             ]],
         ]
     def extract(self, text):
         ents = []
         for label, ent in self.entities:
             for key, pattern in ent:
-                x = re.search(pattern, text.lower())
+                x = re.search(r'\b{}\b'.format(pattern), text.lower())
                 if x:
                     ents.append([key , label])
         return ents
