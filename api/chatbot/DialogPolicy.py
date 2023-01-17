@@ -22,19 +22,19 @@ class DialogPolicy:
         ]
         self.slots = [
             #ASK:GET
-            ["size", "format", "fabric", "pattern"],
+            ["size", "type", "fabric", "pattern"],
             #INFORM:DISAMBIGUATE
-            ["size", "format", "fabric", "pattern"],
+            ["size", "type", "fabric", "pattern"],
             #INFORM:GET
-            ["size", "format", "fabric", "pattern"],
+            ["size", "type", "fabric", "pattern"],
             #INFORM:REFINE
-            ["size", "format", "fabric", "pattern"],
+            ["size", "type", "fabric", "pattern"],
             #REQUEST:ADD_TO_CART
             ["item"],
             #REQUEST:COMPARE
             ["item", "with_item"],
             #REQUEST:GET
-            ["size", "format", "fabric", "pattern"]
+            ["size", "type", "fabric", "pattern"]
         ]
         
     def response(self, i, elapsed, state):
